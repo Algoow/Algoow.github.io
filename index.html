@@ -18,6 +18,9 @@
 			 padding: 50px;
 			
 		}
+		.table-part{
+			margin-top: 5%;
+		}
 		p{
 			text-indent: 60px;
 			margin-bottom: 150px;
@@ -26,6 +29,36 @@
 		body{
 			background-color: #e2e2e2;
 		}
+		table{
+			width: 80%;
+			margin: auto;
+			border:1px solid black;
+			border-radius:20px;
+			padding: 10px;
+			background-color: #C1C0F3; 
+
+		}
+		.row-cell :nth-child(even){
+			background-color: #d6d5ed;
+		}
+
+		td, th{
+			padding: 10px;
+			text-align: center;
+			border:1px solid black;
+			border-radius:10px;
+			}
+		td{
+			font-size: 25px;
+		}
+		th{
+			font-size: 30px;
+		}
+		
+		.row-header{
+			background-color: white;
+		}
+
 	</style>
 		
 </head>
@@ -58,10 +91,52 @@
 		</div>
 
 		<div style="background-color:#C1C0F3; padding:50px; border-radius: 20px; margin-bottom: 0px;">
-			<img src="4.png" height="300px;" style="float: left; matyle="background-color: #C1C0F3;"rgin: auto;" >
+			<img src="4.png" height="300px;" style="float: left; background-color: #C1C0F3;margin: auto;">
 			<p style="font-size: 25px;" align="justify">He is a <b>Local rap artist</b> that released almost <b>20 songs on YouTube.</b> He mix, master and produce his own music without a help of engineer. He did this all while studying, because he believed that knowledge is free and available to everyone, that is the thing the can not be wasted.</p>
 		</div>
 	</div>
+	<div class="table-part">
+		<h1 style="text-align: center;">Family Info</h1>
+		<table>
+			<tr class="row-header">
+				<th>Name</th>
+				<th>Age</th>
+				<th>Status</th>
+				<th>Occupation</th>
+				<th>Relation</th>
+			</tr>
+			<tr class="row-cell">
+				<td>Mikhail Valdez</td>
+				<td>22</td>
+				<td>Single</td>
+				<td>Student</td>
+				<td>Brother</td>
+			</tr>
+			<tr class="row-cell">
+				<td>Judy Ordoña</td>
+				<td>36</td>
+				<td>Married</td>
+				<td>OFW/Housewife</td>
+				<td>Mother</td>
+			</tr>
+			<tr class="row-cell">
+				<td>Edgar Ordoña</td>
+				<td>45</td>
+				<td>Married</td>
+				<td>Engineer/OFW</td>
+				<td>Father</td>
+			</tr>
+			<tr class="row-cell">
+				<td>Carolina Valdez</td>
+				<td>64</td>
+				<td>Widowed</td>
+				<td>Housewife</td>
+				<td>Grandmother</td>
+			</tr>
+		</table>
+	</div>
+		
+
 
 		<footer style="align-content: center;">
 			<p style="text-align: center; font-size: 30px; margin: 0px;"  >Created by: <a href="facebok.com/AlgooOfficial" style="color: black;">Algorhythmo</a> </p>
