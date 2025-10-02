@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meteor Ordona</title>
+  <!-- Bootstrap CSS from CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+ 
+
+    }
+    header {
+    min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background-size: cover;
+      position: relative;
+      color: #34656D;
+      overflow: hidden;
+     padding-top: 56px;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('header-bg.png');
+      z-index: 0;
+      
+    }
+    header .container {
+      position: relative;
+      z-index: 1;
+    }
+    .navbar {
+      padding: 0.3rem 1rem;
+      backdrop-filter: blur(3px);
+    }
+    
+    .navbar-brand img {
+      height: 40px;
+      width: auto;
+    }
+    .nav-link {
+      font-weight: 500;
+      margin-left: 15px;
+    }
+    .nav-link:hover {
+      color: #FAF8F1 !important;
+    }
+    .section-title {
+      margin-bottom: 40px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #34656D;
+    }
+    footer {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .venture-img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .venture-img:hover {
+      transform: scale(1.05);
+    }
+    .intro-img {
+      max-width: 100%;
+      height: auto;
+    }
+    .intro-hello{
+      font-size: 100px;
+      font-family: "Bebas Neue", sans-serif;
+    
+    }
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section .fade-stagger {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    section.visible .fade-stagger {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    html {
+      scroll-padding-top: 80px; /* Offset for fixed navbar */
+    }
+    .hobby-icon {
+      font-size: 2rem;
+      color: #34656D;
+      margin-bottom: 10px;
+    }
+    
+    .social-icons a {
+      color: #34656D;
+      font-size: 1.5rem;
+      margin-left: 15px;
+      transition: transform 0.3s;
+    }
+    .social-icons a:hover {
+      transform: scale(2.2);
+      color: #334443;
+    }
+    .btn-animated {
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s, color 0.4s;
+     
+    }
+    .btn-animated::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.3);
+      transition: left 0.4s;
+    }
+    .btn-animated:hover::after {
+      left: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="metmet.png" alt="Logo">
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ventures">Ventures</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="resume.pdf" download title="Download my resume"><i class="bi bi-download"></i> Resume</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="order-lg-1 col-md-8 text-md-start text-center">
+          <h2 class="fade-stagger" style="font-family: 'Bebas Neue';">Hello, I'm</h2>
+          <h1 class="intro-hello fade-stagger" style="font-family: 'Lilita One', sans-serif;"> METEOR ORDONA</h1>
+          <h3 style="font-family: 'Bebas Neue';" class=" fade-stagger">Entrepreneur | Innovator | Visionary</h3>
+          <div class="social-icons mt-4 fade-stagger">
+            <a href="https://www.facebook.com/Algorhythmo"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.instagram.com/Algorhythmo"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/meteorordona/"><i class="bi bi-linkedin"></i></a>
+          </div>
+ 	    <a href="#about" class="btn btn-outline-success btn-lg mt-3 fade-stagger btn-animated">See More</a>
+        </div>
+        <div class="order-lg-2 col-md-4 text-center mt-4 mt-md-0 fade-stagger">
+          <img src="metmet.png" alt="Portrait" class="intro-img img-fluid">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Me Section -->
+  <section id="about" class="py-5" >
+    <div class="container text-center">
+      <h2 class="section-title fade-stagger">About Me</h2>
+      <p class="w-75 mx-auto fade-stagger text-justify">I’m an entrepreneur at heart, passionate about creating and growing businesses that make an impact. I founded SoleGrip Shoe Grip Enhancer and WTG Clothing Line, where I get to combine marketing, branding, and creativity to bring ideas to life. I love experimenting with digital marketing, exploring tech innovations like IoT, and connecting with communities to build meaningful opportunities. Whether it’s leading projects, collaborating with others, or just brainstorming the next big idea, I’m all about turning IDEA into ACTION.</p>
+      <div class="row mt-5 align-items-center">
+        <div class="col-md-4 fade-stagger">
+          <i class="hobby-icon"><img class="img-fluid" width="70%" src="Leadership.png" alt=""></i>
+          <h5>Leadership & Collaboration</h5>
+          <p>Thrives in team settings, mentoring others, and organizing projects that make an impact in both business and community activities.</p>
+        </div>
+        <div class="col-md-4 fade-stagger">
+          <i class="hobby-icon"><img class="img-fluid" width="70%" src="entrepreneur.png" alt=""></i>
+          <h5>Entrepreneurship & Innovation</h5>
+          <p>Passionate about building businesses and creating new opportunities, from launching my own ventures to exploring creative solutions for everyday challenges.</p>
+        </div>
+        <div class="col-md-4 fade-stagger">
+          <i class="hobby-icon"><img class="img-fluid" width="70%" src="social-media.png" alt=""></i>
+          <h5>Marketing & Social Media</h5>
+          <p>Love experimenting with digital marketing, growing online communities, and sharing ideas through content creation and branding.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience -->
+  <section id="experience" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center fade-stagger">Work Experience</h2>
+      <div class="row">
+        <div class="col-md-6 fade-stagger">
+          <h5>Board of Director for Business Opportunity – JCI Candon City Chapter (NGO)</h5>
+          <p><em>2024 - Present ● Newest</em></p>
+          <p>Leads initiatives to connect entrepreneurs with business opportunities and promote community impact projects through
+            JCI Programs.</p>
+        </div>
+       
+        <div class="col-md-6 fade-stagger">
+          <h5>Founder/Owner – Solegrip</h5>
+          <p><em>2023 - Present</em></p>
+          <p>Established and manage a sports performance product brand focused on enhancing shoe grip for
+             athletes</p>
+        </div>
+        <div class="col-md-6 fade-stagger">
+          <h5>Founder/Owner– Baonem Private Errand Services</h5>
+          <p><em>2025 - Present </em></p>
+          <p>Designed digital campaigns that improved brand engagement significantly.</p>
+        </div>
+        <div class="col-md-6">
+          <h5>Founder/Owner – WTG?-Where's The Gold?</h5>
+          <p><em>2021-Present ● Oldest</em></p>
+          <p>A streetwear clothing brand that inspires you to go for the GOLD.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Ventures Section -->
+  <section id="ventures" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center fade-stagger">My Latest Ventures</h2>
+      <div id="venturesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row text-center">
+              <div class="col-md-4">
+                <a href="https://www.facebook.com/SoleGrip" target="_blank">
+                  <img src="Solegrip.jpg" alt="SoleGrip" class="venture-img">
+                </a>
+                <h5 class="mt-3">SoleGrip – Shoe Grip Enhancer</h5>
+                <p>A performance-driven product for athletes, enhancing shoe traction and safety.</p>
+              </div>
+              <div class="col-md-4">
+                <a href="https://www.facebook.com/BaonemServices" target="_blank">
+                  <img src="Baonem.jpg" alt="Baonem" class="venture-img">
+                </a>
+                <h5 class="mt-3">Baonem – Errand Services</h5>
+                <p>A convenience-focused service helping people with deliveries and errands.</p>
+              </div>
+              <div class="col-md-4">
+                <a href="https://www.facebook.com/WTGWHERESTHEGOLD" target="_blank">
+                  <img src="WTG.jpg" alt="WTG" class="venture-img">
+                </a>
+                <h5 class="mt-3">WTG? - Where's The Gold</h5>
+                <p>An IoT-based system that detects and alerts communities of early flood risks.</p>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="carousel-item">
+            <div class="row text-center">
+              <div class="col-md-4">
+                <a href="#" target="_blank">
+                  <img src="https://placehold.co/300x200?text=Venture+4" alt="Venture 4" class="venture-img">
+                </a>
+                <h5 class="mt-3">Venture 4</h5>
+                <p>Dummy venture description for testing the carousel layout.</p>
+              </div>
+              <div class="col-md-4">
+                <a href="#" target="_blank">
+                  <img src="https://placehold.co/300x200?text=Venture+5" alt="Venture 5" class="venture-img">
+                </a>
+                <h5 class="mt-3">Venture 5</h5>
+                <p>Dummy venture description for testing the carousel layout.</p>
+              </div>
+              <div class="col-md-4">
+                <a href="#" target="_blank">
+                  <img src="https://placehold.co/300x200?text=Venture+6" alt="Venture 6" class="venture-img">
+                </a>
+                <h5 class="mt-3">Venture 6</h5>
+                <p>Dummy venture description for testing the carousel layout.</p>
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#venturesCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#venturesCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button> -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center fade-stagger">Reviews and Testimonials</h2>
+      <div class="row align-items-center">
+         <!-- testemonial 1 -->
+        <div class="col-md-3 col-sm-6 fade-stagger">
+          <blockquote class="blockquote">
+            <div class="mt-3">
+            <i class="bi bi-chat-quote-fill text-primary fs-2"></i>
+            <!-- Or replace with <img src="logo.png" width="40" alt="logo"> -->
+          </div>
+            <p class="text-justify">Solid talaga madulas at dusty yung court namin, walang traction JT1 Shoes ko pero nung ina-apply ko SoleGrip, Grabe sulit talaga!”</p>
+              <div class="text-center text-warning mb-2">
+                  <h6 class="text-darks">Ratings: 4.5%</h6>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+              </div>
+              <footer class="blockquote-footer">D***F • <em>SoleGrip Tiktok Shop</em></footer>
+            </blockquote>
+          </div>
+
+          <!-- testemonial 2 -->
+          <div class="col-md-3 col-sm-6 fade-stagger">
+          <blockquote class="blockquote">
+            <div class="mt-3">
+            <i class="bi bi-chat-quote-fill text-primary fs-2"></i>
+            <!-- Or replace with <img src="logo.png" width="40" alt="logo"> -->
+          </div>
+            <p class="text-justify">This is lit, effective yung product, kudos👌”</p>
+              <div class="text-center text-warning mb-2">
+                  <h6 class="text-darks">Ratings: 4.8%</h6>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+              </div>
+              <footer class="blockquote-footer">thearah • <em>SoleGrip Shopee Shop</em></footer>
+            </blockquote>
+          </div>
+          <!-- testemonial 3 -->
+        <div class="col-md-3 fade-stagger">
+          <blockquote class="blockquote">
+            <div class="mt-3">
+            <i class="bi bi-chat-quote-fill text-primary fs-2"></i>
+            <!-- Or replace with <img src="logo.png" width="40" alt="logo"> -->
+          </div>
+            <p class="text-justify">Super maaasahan talaga and hindi ka magdadalawang isip kasi mahaba patience. Di ka mahihiya kasi madali lang sila kausap”</p>
+           <footer class="blockquote-footer">Ynna Inigo • <em>Baonem Facebook Page</em></footer>
+          </blockquote>
+        </div>
+          <!-- testemonial 4 -->
+        <div class="col-md-3 fade-stagger">
+          <blockquote class="blockquote">
+            <div class="mt-3">
+            <i class="bi bi-chat-quote-fill text-primary fs-2"></i>
+            <!-- Or replace with <img src="logo.png" width="40" alt="logo"> -->
+          </div>
+            <p class="text-justify">Sobrang quality, from the first design consistent at nag-iimprove pa! #Gold”</p>
+            <footer class="blockquote-footer">Lester Castro • <em>WTG? Facebook Page</em></footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Education Section -->
+  <section id="education" class="py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="section-title fade-stagger">Education</h2>
+      <div class="fade-stagger">
+        <h5>Bachelor of Science in Computer Science</h5>
+        <p><em>University of Northern Philippines – 2025</em></p>
+        <p>Thesis: <strong>Agridam: IoT Early Flood Risk Monitoring and Alarm System</strong></p>
+        <p>General Weighted Average: <strong>1.8</strong></p>
+      </div>
+      
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Metmet. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Fade-in animation with stagger effect
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const children = entry.target.querySelectorAll('.fade-stagger');
+          children.forEach((child, index) => {
+            child.style.transitionDelay = `${index * 0.2}s`;
+          });
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
