@@ -17,8 +17,6 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
       scroll-behavior: smooth;
-
-
     }
 
     header {
@@ -29,7 +27,8 @@
       position: relative;
       color: #34656D;
       overflow: hidden;
-      padding-top: 56px;
+      padding-top: 80px;
+      padding-bottom: 40px;
     }
 
     header::before {
@@ -41,7 +40,6 @@
       bottom: 0;
       background-image: url('header-bg.png');
       z-index: 0;
-
     }
 
     header .container {
@@ -50,8 +48,9 @@
     }
 
     .navbar {
-      padding: 0.3rem 1rem;
-      backdrop-filter: blur(3px);
+      padding: 0.5rem 1rem;
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.9);
     }
 
     .navbar-brand img {
@@ -61,15 +60,22 @@
 
     .nav-link {
       font-weight: 500;
-      margin-left: 15px;
+      margin-left: 0;
+      color: #34656D;
+    }
+
+    @media (min-width: 992px) {
+      .nav-link {
+        margin-left: 15px;
+      }
     }
 
     .nav-link:hover {
-      color: #FAF8F1 !important;
+      color: #1e3d43 !important;
     }
 
     .section-title {
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -95,23 +101,32 @@
     }
 
     .intro-img {
-      max-width: 100%;
+      max-width: 80%;
       height: auto;
     }
 
-    .intro-hello {
-      font-size: 100px;
-      font-family: "Bebas Neue", sans-serif;
+    @media (min-width: 768px) {
+      .intro-img {
+        max-width: 100%;
+      }
+    }
 
+    .intro-hello {
+      font-size: clamp(3rem, 8vw, 6.25rem);
+      font-family: "Lilita One", sans-serif;
+      line-height: 1.1;
     }
 
     section {
-      min-height: 100vh;
+      min-height: auto;
+      padding-top: 60px;
+      padding-bottom: 60px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       opacity: 0;
       transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
 
     section.visible {
@@ -122,7 +137,7 @@
     section .fade-stagger {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
 
     section.visible .fade-stagger {
@@ -131,8 +146,7 @@
     }
 
     html {
-      scroll-padding-top: 80px;
-      /* Offset for fixed navbar */
+      scroll-padding-top: 70px;
     }
 
     .hobby-icon {
@@ -144,41 +158,79 @@
     .social-icons a {
       color: #34656D;
       font-size: 1.5rem;
-      margin-left: 15px;
+      margin-right: 15px;
+      display: inline-block;
       transition: transform 0.3s;
     }
 
     .social-icons a:hover {
-      transform: scale(2.2);
+      transform: scale(1.3);
       color: #334443;
     }
 
-    .btn-animated {
-      position: relative;
-      overflow: hidden;
-      transition: background 0.4s, color 0.4s;
-
+    /* Updated Book Now Button UI */
+    .btn-book-now {
+      background: linear-gradient(135deg, #34656D 0%, #1e3d43 100%);
+      color: #ffffff;
+      padding: 12px 32px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(52, 101, 109, 0.4);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .btn-animated::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.3);
-      transition: left 0.4s;
+    .btn-book-now:hover {
+      background: linear-gradient(135deg, #1e3d43 0%, #0f2226 100%);
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(52, 101, 109, 0.6);
     }
 
-    .btn-animated:hover::after {
-      left: 100%;
+    .btn-book-now:active {
+      transform: translateY(1px);
     }
-    h1,h2,h3,h4,h5{
+
+    h1, h2, h3, h4, h5 {
       color: #34656D;
     }
-    b{
+
+    b {
       color: black;
+    }
+
+    /* Carousel Custom Styling */
+    .cert-img-container,
+    .design-img-container {
+      max-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f9fa;
+    }
+
+    .cert-img-container img,
+    .design-img-container img {
+      max-height: 450px;
+      object-fit: contain;
+      width: 100%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(52, 101, 109, 0.8);
+      border-radius: 50%;
+      padding: 15px;
+      background-size: 50% 50%;
+    }
+
+    .carousel-indicators [data-bs-target] {
+      background-color: #34656D;
     }
   </style>
 </head>
@@ -186,7 +238,7 @@
 <body>
 
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="metmet.png" alt="Logo">
@@ -198,12 +250,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <!-- <li class="nav-item"><a class="nav-link" href="#about">About</a></li> -->
           <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="#clients">Clients&Works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#clients">Clients & Works</a></li>
           <li class="nav-item"><a class="nav-link" href="#ventures">Ventures</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ngo">NGO & Voluntary Work</a></li>
           <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-          <!-- <li class="nav-item"><a class="nav-link" href="#education">Education</a></li> -->
           <li class="nav-item"><a class="nav-link" href="resume.pdf" download title="Download my resume"><i
                 class="bi bi-download"></i> Resume</a></li>
         </ul>
@@ -214,451 +266,639 @@
   <!-- Header -->
   <header>
     <div class="container">
-      <div class="row align-items-center">
-        <div class="order-lg-1 col-md-8 text-md-start text-center">
+      <div class="row align-items-center flex-column-reverse flex-lg-row">
+        <div class="col-lg-8 text-lg-start text-center mt-4 mt-lg-0">
           <h2 class="fade-stagger" style="font-family: 'Bebas Neue';">Hello, I'm</h2>
-          <h1 class="intro-hello fade-stagger" style="font-family: 'Lilita One', sans-serif;"> METEOR ORDONA</h1>
-          <h3 style="font-family: 'Bebas Neue';" class=" fade-stagger">Entrepreneur | Social Media Manager | Graphic
-            Designer | Web Developer
-          </h3>
-          <p class="text-justify">A Tech Savvy Entrepreneur with expertise in digital marketing, brand development, and
-            creative media. Skilled in web development, video editing, graphic designing and social media strategy with
-            a strong background in entrepreneurship and nonprofit leadership. Founder of three ventures in sports
-            performance, clothing industry and logistics.</p>
+          <h1 class="intro-hello fade-stagger">METEOR ORDONA</h1>
+          <h3 style="font-family: 'Bebas Neue';" class="fade-stagger">Entrepreneur | Social Media Manager | Graphic Designer | Web Developer</h3>
+          <p class="text-md-start text-center">A Tech Savvy Entrepreneur with expertise in digital marketing, brand development, and creative media. Skilled in web development, video editing, graphic designing, and social media strategy with a strong background in entrepreneurship and nonprofit leadership. Founder of three ventures in sports performance, clothing industry, and logistics.</p>
           <div class="social-icons mt-4 fade-stagger">
             <a href="https://www.facebook.com/Algorhythmo"><i class="bi bi-facebook"></i></a>
             <a href="#"><i class="bi bi-twitter"></i></a>
             <a href="https://www.instagram.com/Algorhythmo"><i class="bi bi-instagram"></i></a>
             <a href="https://www.linkedin.com/in/meteorordona/"><i class="bi bi-linkedin"></i></a>
           </div>
-          <a href="#about" class="btn btn-outline-success btn-lg mt-3 fade-stagger btn-animated">See More</a>
+          <!-- Updated UI Book Now Button -->
+          <button type="button" class="btn btn-book-now mt-4 fade-stagger" data-bs-toggle="modal" data-bs-target="#bookingModal">
+            <i class="bi bi-calendar-check-fill"></i> Book Now
+          </button>
         </div>
-        <div class="order-lg-2 col-md-4 text-center mt-4 mt-md-0 fade-stagger">
+        <div class="col-lg-4 text-center fade-stagger">
           <img src="metmet.png" alt="Portrait" class="intro-img img-fluid">
         </div>
       </div>
     </div>
   </header>
 
-  <!-- About Me Section -->
-  <!-- <section id="about" class="py-5">
-    <div class="container text-center">
-      <h2 class="section-title fade-stagger">About Me</h2>
-      <p class="w-75 mx-auto fade-stagger text-justify">A Tech Savvy Entrepreneur with expertise in digital marketing,
-        brand development, and creative media.
-        Skilled in web development, video editing, graphic designing and social media strategy with a strong
-        background in entrepreneurship and nonprofit leadership. Founder of three ventures in sports performance,
-        clothing industry and logistics.</p>
-      <div class="row mt-5 align-items-center">
-        <div class="col-md-4 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" width="70%" src="Leadership.png" alt=""></i>
-          <h5>Leadership & Collaboration</h5>
-          <p>Thrives in team settings, mentoring others, and organizing projects that make an impact in both business
-            and community activities.</p>
+  <!-- Booking / Lead Funnel Modal -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0" style="background-color: #f8f9fa;">
+          <div>
+            <h4 class="modal-title fw-bold" id="bookingModalLabel" style="color: #34656D;">Let's Work Together</h4>
+            <p class="text-muted small mb-0">Fill out this quick form and I will get back to you shortly.</p>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="col-md-4 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" width="70%" src="entrepreneur.png" alt=""></i>
-          <h5>Entrepreneurship & Innovation</h5>
-          <p>Passionate about building businesses and creating new opportunities, from launching my own ventures to
-            exploring creative solutions for everyday challenges.</p>
-        </div>
-        <div class="col-md-4 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" width="70%" src="social-media.png" alt=""></i>
-          <h5>Marketing & Social Media</h5>
-          <p>Love experimenting with digital marketing, growing online communities, and sharing ideas through content
-            creation and branding.</p>
+        <div class="modal-body p-4">
+          <form id="bookingFunnelForm">
+            <div class="mb-3">
+              <label for="fullName" class="form-label fw-semibold">Full Name *</label>
+              <input type="text" class="form-control" id="fullName" placeholder="e.g. John Doe" required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="emailAddress" class="form-label fw-semibold">Email Address *</label>
+              <input type="email" class="form-control" id="emailAddress" placeholder="e.g. john@example.com" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="contactNumber" class="form-label fw-semibold">Contact Number *</label>
+              <input type="tel" class="form-control" id="contactNumber" placeholder="e.g. +63 912 345 6789" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="serviceSelect" class="form-label fw-semibold">Service You Need *</label>
+              <select class="form-select" id="serviceSelect" required>
+                <option value="" selected disabled>Select a service...</option>
+                <option value="Graphic Design & SMM">Graphic Design & Social Media Management</option>
+                <option value="Consultation & Strategy">AI Workflow Automation</option>
+                <option value="Web Design & Development">Web Design & Development</option>
+                <option value="Video Editing">Video Editing</option>
+                <option value="Event Planning & Management">Event Planning / Management</option>
+                <option value="Consultation & Strategy">Consultation & Strategy</option>
+                <option value="Other">Other Custom Service</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="projectDetails" class="form-label fw-semibold">Project Details / Message</label>
+              <textarea class="form-control" id="projectDetails" rows="4" placeholder="Tell me a bit about your project, timeline, or requirements..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-book-now w-100 justify-content-center mt-2">
+              Submit Request <i class="bi bi-send-fill ms-1"></i>
+            </button>
+          </form>
         </div>
       </div>
     </div>
-  </section> -->
+  </div>
 
-  <!-- Work Experience -->
+  <!-- Work Experience Section -->
   <section id="experience" class="py-5 bg-light">
     <div class="container">
       <h2 class="section-title text-center fade-stagger">Work Experience</h2>
-      <div class="row">
+      <div class="row g-4">
         <div class="col-md-6 fade-stagger">
-          <h5>Board of Director for Business Opportunity – JCI Candon City Chapter (NGO)</h5>
-          <p><em>2025 - Present ● Newest</em></p>
-          <p>Leads initiatives to connect entrepreneurs with business opportunities and promote community impact
-            projects through
-            JCI Programs.</p>
+          <h5>Secretary General – JCI Candon City Chapter (NGO)</h5>
+          <p><em>2026 ● Newest</em></p>
+          <p>Serves as the primary administrative and coordination officer of JCI Candon Gold Leaf, working closely with the Local Organization President and Board of Directors to ensure effective communication, documentation, and implementation of chapter activities and organizational policies.</p>
         </div>
 
         <div class="col-md-6 fade-stagger">
-          <h5 class="">Website Developer – Freelance</h5>
-          <p><em>2022 - Present </em></p>
-          <p>Edited short-form highlight videos from full videos like wedding same-day edits (SDE), to create engaging,
-            shareable content.</p>
+          <h5>Project Chairman and Manager /Overall Director / Creative Designer / Area Coordinator – Various Sporting Events</h5>
+          <p><em>20/10/2025 - Present ● Contractual</em></p>
+          <p>Directs overall operations, event logistics, and visual branding for major regional sports events including Sitio Korea 
+            - Calongbuyan Sportfest, IBP Run For Justice 2026, Run to End VAWC Fun Run, 
+            The Battle of Tirad Pass 100 miles Ultramarathon, Empow-Her Run Candon, 
+            Mind in Motion: A Run for Resilience and Mental Awareness and 
+            Runod Ayat Charity Race 2025.</p>
         </div>
+
         <div class="col-md-6 fade-stagger">
-          <h5>Founder/Owner– Baonem Private Errand Services</h5>
-          <p><em>2025 - Present </em></p>
-          <p>Designed digital campaigns that improved brand engagement significantly.</p>
+          <h5>Founder / Co-Founder – Candon Running Community</h5>
+          <p><em>25/04/2025 - Present</em></p>
+          <p>Co-established and leads a vibrant community of podium runners and hobbyists in Candon, overseeing organizational strategy, promotional branding, community outreach, and regular running events.</p>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <h5>Event Floor Director / Creative Designer – Public Attorney's Office (PAO) Region 1</h5>
+          <p><em>03/12/2025 - 13/12/2025 ● Contractual Freelance</em></p>
+          <p>Managed live event floor execution, creative layout, and visual marketing assets under an agency contract to support official agency functions and regional gatherings.</p>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <h5>Board of Director for Business Opportunity – JCI Candon City Chapter (NGO)</h5>
+          <p><em>2025</em></p>
+          <p>Leads initiatives to connect entrepreneurs with business opportunities and promote community impact projects through JCI Programs.</p>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <h5>Website Developer – Freelance</h5>
+          <p><em>2022 - Present</em></p>
+          <p>Designs and deploys custom responsive web apps, landing pages, and administrative management platforms tailored to individual client goals.</p>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <h5>Founder/Owner – Baonem Private Errand Services</h5>
+          <p><em>2025 - Present</em></p>
+          <p>Founded and actively operates a localized delivery and errand service, organizing logistics workflows and launching targeted digital marketing campaigns.</p>
         </div>
 
         <div class="col-md-6 fade-stagger">
           <h5>Video Editor – Freelance</h5>
-          <p><em>2022 - Present </em></p>
-          <p>Edited short-form highlight videos from full videos like wedding same-day edits (SDE), to create engaging,
-            shareable content.</p>
+          <p><em>2022 - Present</em></p>
+          <p>Edited short-form highlight videos from full-length footage like wedding same-day edits (SDE) to create engaging, shareable social content.</p>
         </div>
+
         <div class="col-md-6 fade-stagger">
           <h5>Founder/Owner – Solegrip</h5>
           <p><em>2023 - Present</em></p>
-          <p>Established and manage a sports performance product brand focused on enhancing shoe grip for
-            athletes</p>
+          <p>Established and manages an athletic sports performance product brand designed to improve court traction and shoe safety for athletes.</p>
         </div>
+
         <div class="col-md-6 fade-stagger">
           <h5>Marketing Assistant – Unirises</h5>
-          <p><em>2021-2022</em></p>
-          <p>Helped launch and grow a startup software company by building its marketing foundation from zero</p>
+          <p><em>2021 - 2022</em></p>
+          <p>Helped launch and scale a tech startup software company by building its core digital marketing foundation from the ground up.</p>
         </div>
-        <div class="col-md-12 fade-stagger text-center">
+
+        <div class="col-md-6 fade-stagger">
           <h5>Freelance Social Media Recovery Specialist</h5>
           <p><em>2019 - 2021 ● Oldest</em></p>
-          <p>Provided social media recovery assistance by helping clients regain access to compromised or lost accounts.
+          <p>Provided account recovery assistance and consultation by helping clients regain access to compromised or lost social media handles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Carousel Section -->
+  <section id="certifications" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center fade-stagger">Professional Certifications</h2>
+      
+      <div id="certificationsCarousel" class="carousel slide shadow rounded fade-stagger" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <div class="carousel-indicators mb-1">
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="5" aria-label="Slide 5"></button>
+        </div>
+
+        <!-- Carousel Slides (Newest to Oldest) -->
+        <div class="carousel-inner rounded">
+          
+          <!-- Slide 1: Digital Marketing -->
+          <div class="carousel-item active">
+            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
+              <div class="col-md-7 cert-img-container rounded p-2">
+                <img src="certDigital.png" class="img-fluid rounded border" alt="Digital Marketing Certified">
+              </div>
+              <div class="col-md-5 p-4">
+                <h5>Digital Marketing Certified – HubSpot Academy</h5>
+                <p class="text-muted"><em>Valid: Aug 31, 2026 – Sep 29, 2028</em></p>
+                <p><strong>Code:</strong> <code>2c675177929441f5b27f70edef29c67b</code></p>
+                <p>Demonstrates proficiency in applying inbound digital marketing strategies, SEO-friendly content creation, web optimization, multi-channel advertising, video marketing, and performance analytics.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Technical Project Manager -->
+          <div class="carousel-item">
+            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
+              <div class="col-md-7 cert-img-container rounded p-2">
+                <img src="cert CTPM.png" class="img-fluid rounded border" alt="Certified Technical Project Manager">
+              </div>
+              <div class="col-md-5 p-4">
+                <h5>Certified Technical Project Manager – Appkademiya</h5>
+                <p class="text-muted"><em>Issued: Aug 31, 2026</em></p>
+                <p><strong>No:</strong> <code>CERT-TECHNICAL-PROJECT-MANAGER-20260830-2A2F9C7BE2E7</code></p>
+                <p>Validates core capabilities in technical project oversight, workflow structure, risk mitigation, resource coordination, and execution of complex tech initiatives.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: NetOps Certified Engineer -->
+          <div class="carousel-item">
+            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
+              <div class="col-md-7 cert-img-container rounded p-2">
+                <img src="certNetOps.png" class="img-fluid rounded border" alt="NetOps Certified Engineer">
+              </div>
+              <div class="col-md-5 p-4">
+                <h5>NetOps Certified Engineer (NTO-101) – Appkademiya</h5>
+                <p class="text-muted"><em>Issued: Aug 31, 2026</em></p>
+                <p><strong>No:</strong> <code>CERT-NETOPS-CERTIFIED-ENGINEER-NTO101-20260830-6BF59A8E80DE</code></p>
+                <p>Certifies expertise in network operations, infrastructure configuration, system reliability maintenance, and operational network engineering standards.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4: Cybersecurity Professional -->
+          <div class="carousel-item">
+            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
+              <div class="col-md-7 cert-img-container rounded p-2">
+                <img src="certCCP.png" class="img-fluid rounded border" alt="Certified Cybersecurity Professional">
+              </div>
+              <div class="col-md-5 p-4">
+                <h5>Certified Cybersecurity Professional (CCP) – Appkademiya</h5>
+                <p class="text-muted"><em>Issued: Aug 30, 2026</em></p>
+                <p><strong>No:</strong> <code>CERT-CCP-CYBERSECURITY-PROFESSIONAL-20260829-3500E357B4F8</code></p>
+                <p>Confirms practical knowledge of cybersecurity principles, system security controls, threat assessment, and protective digital asset management.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5: Social Media Certified -->
+          <div class="carousel-item">
+            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
+              <div class="col-md-7 cert-img-container rounded p-2">
+                <img src="certSocialmedia.png" class="img-fluid rounded border" alt="Social Media Certified">
+              </div>
+              <div class="col-md-5 p-4">
+                <h5>Social Media Certified – HubSpot Academy</h5>
+                <p class="text-muted"><em>Valid: Oct 13, 2025 – Nov 12, 2027</em></p>
+                <p><strong>Code:</strong> <code>4605d4c05a424fbba166d8380b04b7ca</code></p>
+                <p>Validates capability in building inbound social media strategies, social monitoring, content creation, community engagement, policy creation, and demonstrating social ROI.</p>
+              </div>
+            </div>
+          </div>
+<!-- Slide 6 (Add inside #cert-carousel .carousel-inner) -->
+<div class="carousel-item">
+  <div class="row g-4 align-items-center p-4">
+    <div class="col-md-7 text-center">
+      <div class="bg-light p-2 rounded border">
+        <img src="SEO.jpeg" class="img-fluid rounded max-h-380" alt="SEO with Squarespace Certificate">
+      </div>
+    </div>
+    <div class="col-md-5">
+      <h5 class="fw-bold text-brand mb-1">Search Engine Optimization (SEO) with Squarespace</h5>
+      <p class="text-muted small mb-2"><em>Issued by Coursera ● Sep 28, 2025</em></p>
+      <p class="text-xs font-monospace mb-3"><strong>Credential ID:</strong>7W95O2Y88PPU</p>
+      <p class="text-secondary small">
+        Demonstrates practical capability in planning, configuring, and optimizing search engine optimization (SEO) settings, keyword placement, and metadata within Squarespace websites to drive organic traffic.
+      </p>
+    </div>
+  </div>
+</div>
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#certificationsCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#certificationsCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Clients & Works Section -->
+  <section id="clients" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center fade-stagger">Clients & Works</h2>
+      
+      <!-- GRAPHIC DESIGN SECTION TITLE -->
+      <h3 class="fade-stagger mb-4 text-center text-lg-start">GRAPHIC DESIGN</h3>
+
+      <!-- Graphic Design Client 1: JCI -->
+      <div class="row g-4 align-items-center mb-5 fade-stagger">
+        <div class="col-lg-2 col-md-3 text-center">
+          <img class="img-fluid rounded mb-3 mb-md-0" style="max-height: 120px;" src="JCI.png" alt="JCI Logo">
+        </div>
+        <div class="col-lg-7 col-md-9">
+          <h3>JCI Candon Gold Leaf</h3>
+          <h5>JCI Candon Gold Leaf is a Local Organization of Junior Chamber International focused on community outreach and youth leadership.</h5>
+          <p>I handled their social media visuals across Facebook and Instagram, crafting promotional graphics, event announcements, posters, and campaign templates.</p>
+        </div>
+        <div class="col-lg-3 col-md-12">
+          <p class="mb-1"><b>Sector:</b> NGO</p>
+          <p class="mb-1"><b>Company:</b> JCI Candon Gold Leaf</p>
+          <p class="mb-1"><b>Year:</b> 2025</p>
+          <p class="mb-1"><b>Work Type:</b> Graphic Design</p>
+        </div>
+
+        <!-- JCI Visuals Carousel -->
+        <div class="col-12 mt-3">
+          <h5 class="mb-1">Instagram & Facebook Visuals</h5>
+          <p class="text-muted">Static Posts (1080x1080)</p>
+
+          <div id="jciCarousel" class="carousel slide shadow rounded bg-white p-3 p-md-4" data-bs-ride="carousel">
+            <div class="carousel-indicators mb-0">
+              <button type="button" data-bs-target="#jciCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Work 1"></button>
+              <button type="button" data-bs-target="#jciCarousel" data-bs-slide-to="1" aria-label="Work 2"></button>
+              <button type="button" data-bs-target="#jciCarousel" data-bs-slide-to="2" aria-label="Work 3"></button>
+              <button type="button" data-bs-target="#jciCarousel" data-bs-slide-to="3" aria-label="Work 4"></button>
+              <button type="button" data-bs-target="#jciCarousel" data-bs-slide-to="4" aria-label="Work 5"></button>
+              <button type="button" data-bs-target="#jciCarousel" data-bs-slide-to="5" aria-label="Work 6"></button>
+              <button type="button" data-bs-target="#jciCarousel" data-bs-slide-to="6" aria-label="Work 7"></button>
+              <button type="button" data-bs-target="#jciCarousel" data-bs-slide-to="7" aria-label="Work 8"></button>
+            </div>
+
+            <div class="carousel-inner rounded">
+              <div class="carousel-item active"><div class="design-img-container"><img src="1.png" alt="Work 1"></div></div>
+              <div class="carousel-item"><div class="design-img-container"><img src="2.png" alt="Work 2"></div></div>
+              <div class="carousel-item"><div class="design-img-container"><img src="3.png" alt="Work 3"></div></div>
+              <div class="carousel-item"><div class="design-img-container"><img src="4.png" alt="Work 4"></div></div>
+              <div class="carousel-item"><div class="design-img-container"><img src="5.png" alt="Work 5"></div></div>
+              <div class="carousel-item"><div class="design-img-container"><img src="6.png" alt="Work 6"></div></div>
+              <div class="carousel-item"><div class="design-img-container"><img src="7.jpg" alt="Work 7"></div></div>
+              <div class="carousel-item"><div class="design-img-container"><img src="8.png" alt="Work 8"></div></div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#jciCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#jciCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Graphic Design Client 2: CRC -->
+      <div class="row g-4 align-items-center mt-5 fade-stagger">
+        <div class="col-lg-2 col-md-3 text-center">
+          <img class="img-fluid rounded mb-3 mb-md-0" style="max-height: 120px;" src="CRC-Logo.png" alt="CRC Logo">
+        </div>
+        <div class="col-lg-7 col-md-9">
+          <h3>Candon Running Community</h3>
+          <h5>A running organization for competitive podium runners and fitness enthusiasts.</h5>
+          <p>I managed visual content for Facebook and Instagram, designing event assets, registration flyers, and social updates.</p>
+        </div>
+        <div class="col-lg-3 col-md-12">
+          <p class="mb-1"><b>Sector:</b> Sports Club/Community</p>
+          <p class="mb-1"><b>Company:</b> Candon Running Community</p>
+          <p class="mb-1"><b>Year:</b> 2025</p>
+          <p class="mb-1"><b>Work Type:</b> Graphic Design</p>
+        </div>
+
+        <!-- CRC Visuals Carousel -->
+        <div class="col-12 mt-3">
+          <h5 class="mb-1">Instagram & Facebook Visuals</h5>
+          <p class="text-muted">Static Posts (1080x1350)</p>
+
+          <div id="crcCarousel" class="carousel slide shadow rounded bg-white p-3 p-md-4" data-bs-ride="carousel">
+            <div class="carousel-indicators mb-0">
+              <button type="button" data-bs-target="#crcCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="CRC 1"></button>
+              <button type="button" data-bs-target="#crcCarousel" data-bs-slide-to="1" aria-label="CRC 2"></button>
+              <button type="button" data-bs-target="#crcCarousel" data-bs-slide-to="2" aria-label="CRC 3"></button>
+              <button type="button" data-bs-target="#crcCarousel" data-bs-slide-to="3" aria-label="CRC 4"></button>
+            </div>
+
+            <div class="carousel-inner rounded">
+              <div class="carousel-item active"><div class="design-img-container"><img src="CRC-1.png" alt="CRC 1"></div></div>
+              <div class="carousel-item"><div class="design-img-container"><img src="CRC-2.png" alt="CRC 2"></div></div>
+              <div class="carousel-item"><div class="design-img-container"><img src="CRC-3.png" alt="CRC 3"></div></div>
+              <div class="carousel-item"><div class="design-img-container"><img src="CRC-4.png" alt="CRC 4"></div></div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#crcCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#crcCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Web Design Section -->
+  <section class="py-5">
+    <div class="container">
+      <h3 class="section-title fade-stagger text-center text-lg-start mb-4">Web Design & Development</h3>
+      
+      <!-- Web Project 1 -->
+      <div class="row g-4 align-items-center mb-5">
+        <div class="col-lg-5 fade-stagger order-1 order-lg-1">
+          <img class="img-fluid rounded shadow-sm" src="Agridam.png" alt="Agridam Screenshot">
+        </div>
+        <div class="col-lg-4 fade-stagger order-2 order-lg-2">
+          <h3>Agridam: Early Flood Risk Monitoring System</h3>
+          <h5>An IoT system alerting communities about real-time water levels.</h5>
+          <p>Engineered an IoT device integrated with a live administrative tracking dashboard to log incoming sensor metrics accurately.</p>
+        </div>
+        <div class="col-lg-3 fade-stagger order-3 order-lg-3">
+          <p class="mb-1"><b>Sector:</b> Flood Prediction / Monitoring</p>
+          <p class="mb-1"><b>Company:</b> Personal Project</p>
+          <p class="mb-1"><b>Year:</b> 2023</p>
+          <p class="mb-1"><b>Tech:</b> IoT, C++, Firebase, Web</p>
+          <p class="mb-0"><b>Link:</b> <a class="link-info" href="https://agridamiot-8059c.web.app/devices.html" target="_blank">Visit Web App</a></p>
+        </div>
+      </div>
+
+      <!-- Web Project 2 -->
+      <div class="row g-4 align-items-center mb-5">
+        <div class="col-lg-5 fade-stagger order-1 order-lg-2">
+          <img class="img-fluid rounded shadow-sm" src="sublaten.png" alt="Sublaten Screenshot">
+        </div>
+        <div class="col-lg-4 fade-stagger order-2 order-lg-1">
+          <h3>Sublaten Hardware Store System</h3>
+          <h5>Inventory monitoring tool for a hardware retailer in Galimuyod.</h5>
+          <p>Created a web-based portal allowing staff to organize, update, and manage hardware inventory efficiently.</p>
+        </div>
+        <div class="col-lg-3 fade-stagger order-3 order-lg-3">
+          <p class="mb-1"><b>Sector:</b> Retail / Hardware</p>
+          <p class="mb-1"><b>Company:</b> Sublaten</p>
+          <p class="mb-1"><b>Year:</b> 2022</p>
+          <p class="mb-1"><b>Tech:</b> SQL, PHP, CSS, Web Design</p>
+          <p class="mb-0"><b>Link:</b> <a class="link-info" href="https://sublatenhardware.ml" target="_blank">Visit Website</a></p>
+        </div>
+      </div>
+
+      <!-- Web Project 3 -->
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-5 fade-stagger order-1 order-lg-2">
+          <img class="img-fluid rounded shadow-sm" src="alon.png" alt="Alon Kiai Screenshot">
+        </div>
+        <div class="col-lg-4 fade-stagger order-2 order-lg-1">
+          <h3>Alon Kia'i Landing Page</h3>
+          <h5>Advocacy platform focused on marine life conservation.</h5>
+          <p>Designed a responsive web page built to explain environmental objectives and grow awareness for ocean initiatives.</p>
+        </div>
+        <div class="col-lg-3 fade-stagger order-3 order-lg-3">
+          <p class="mb-1"><b>Sector:</b> NGO / Conservation</p>
+          <p class="mb-1"><b>Company:</b> Alon Kia'i</p>
+          <p class="mb-1"><b>Year:</b> 2020</p>
+          <p class="mb-1"><b>Tech:</b> Web Design, UI/UX</p>
+          <p class="mb-0"><b>Link:</b> <a class="link-info" href="https://alonkiai.ml" target="_blank">Visit Website</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Ventures Section -->
+  <section id="ventures" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center fade-stagger">My Latest Ventures</h2>
+      <div class="row g-4 text-center">
+        <div class="col-md-4 fade-stagger">
+          <a href="https://www.facebook.com/SoleGrip" target="_blank">
+            <img src="Solegrip.jpg" alt="SoleGrip" class="venture-img shadow-sm">
+          </a>
+          <h5 class="mt-3">SoleGrip – Shoe Grip Enhancer</h5>
+          <p>Performance product designed to improve shoe traction and control for athletes.</p>
+        </div>
+        <div class="col-md-4 fade-stagger">
+          <a href="https://www.facebook.com/BaonemServices" target="_blank">
+            <img src="Baonem.jpg" alt="Baonem" class="venture-img shadow-sm">
+          </a>
+          <h5 class="mt-3">Baonem – Errand Services</h5>
+          <p>Reliable local logistics and errand execution for quick document and parcel movement.</p>
+        </div>
+        <div class="col-md-4 fade-stagger">
+          <a href="https://www.facebook.com/WTGWHERESTHEGOLD" target="_blank">
+            <img src="WTG.jpg" alt="WTG" class="venture-img shadow-sm">
+          </a>
+          <h5 class="mt-3">WTG? - Where's The Gold</h5>
+          <p>A streetwear label designed to inspire drive and personal success.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NGO & Voluntary Work Section -->
+  <section id="ngo" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center fade-stagger">NGO & Voluntary Work</h2>
+      <div class="row g-4">
+        <div class="col-md-6 fade-stagger">
+          <h5>Project Head / Project Implementor – Candon Running Community Runs</h5>
+          <p><em>Present</em></p>
+          <p>Oversees the planning, implementation, and overall execution of community running initiatives and athletic programs organized under Candon Running Community.</p>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <h5>Volunteer / Technical Committee – Project Silaw</h5>
+          <p><em>07/02/2026 ● JCI Candon Gold Leaf / Brgy. Caterman, Candon City</em></p>
+          <p>Collaborated with JCI Ilocandia Region and JCI Imus Wagayway to conduct community assessments and deliver essential assistance to remote households in Caterman.</p>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <h5>Volunteer – Hapagkamustahan Year 2: A Table of Hope</h5>
+          <p><em>25/04/2026 ● JCI Candon Gold Leaf / Province Government of Ilocos Sur / Provincial Jail of I.S. / IBP - Ilocos Sur</em></p>
+          <p>Engaged in inmate welfare visits at BJMP, hosting meaningful dialogues and providing social support specifically tailored for Persons Deprived of Liberty without regular visitors.</p>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <h5>Volunteer / Technical Committee – Happy Grannies</h5>
+          <p><em>10/25/2025 ● JCI Candon Gold Leaf / Balay Taripato Home for Care, Sta. Lucia</em></p>
+          <p>Visited senior residents at Balay Taripato Home for Care, facilitating entertainment, interactive engagement, and essential supply distributions.</p>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <h5>Volunteer / Technical Committee – YOUthCANDOnIT: Take Lead Leadership</h5>
+          <p><em>07/10/2025 ● JCI Candon Gold Leaf</em></p>
+          <p>Organized student leadership seminars to foster effective governance skills and facilitated the Youth Leadership Excellence Award (YLEA) presentation.</p>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <h5>Volunteer / Technical Committee – Project Bright Start: Bag to School Program</h5>
+          <p><em>06/16/2025 ● JCI Candon Gold Leaf / Brgy. Bay-asan, Banayoyo, Ilocos Sur</em></p>
+          <p>Facilitated Safe Spaces Act educational discussions for local children while distributing school supplies and personal hygiene kits to a remote community.</p>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <h5>Volunteer – PaWeCan!: Shell-Ebrate Life, Save Our Turtles</h5>
+          <p><em>20/05/2025 ● JCI Candon Gold Leaf / Curma La Union</em></p>
+          <p>Engaged in coastal environmental preservation activities and sea turtle habitat awareness initiatives.</p>
+        </div>
+      </div>
+
+      <!-- Professional Note -->
+      <div class="row mt-5">
+        <div class="col-12 text-center fade-stagger">
+          <p class="text-muted fst-italic">
+            In addition to these highlighted projects, I regularly participate in various other community development and civic actions. To learn more or explore my ongoing involvement, please visit the official <a href="https://www.facebook.com/JCICandon" target="_blank" class="text-decoration-none fw-bold" style="color: #34656D;">JCI Candon Gold Leaf</a> page.
           </p>
         </div>
       </div>
     </div>
   </section>
-  <!-- Clients Section -->
-  <section id="clients" class="py-5">
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-5 bg-light">
     <div class="container">
-      <h2 class="section-title text-center fade-stagger">Clients & Works</h2>
-      <div class="row">
-
-        <h3 class="section-title fade-stagger">GRAPHIC DESIGN</h3>
-        <div class="col-md-2 fade-stagger">
-          <img class="img-fluid" width="100%" src="JCI.png" alt="" style="padding: 0;">
-        </div>
-        <div class="col-md-7 fade-stagger">
-          <h2 class="fade-stagger">JCI Candon Gold Leaf</h2>
-          <h5>JCI Candon Gold Leaf is a Local Organization of Junior Chamber International, non-goverment organization
-            that focused in community outreach and leadership.</h5>
-          <p>I handled their Social Media Pages Designs especially Facebook and Instagram, creating
-            for event announcements, posters etc.</p>
-        </div>
-        <div class="col-md-3 fade-stagger">
-          <h5><b>Sector: </b>Non-Government Organization</h5>
-          <h5><b>Company: </b>JCI Candon Gold Leaf</h5>
-          <h5><b>Year: </b>2025</h5>
-          <h5><b>Work Type: </b>Graphic Design</h5>
-        </div>
-
-        <h5 class="fade-stagger" style="padding-top: 30px;">Instagram & Facebook</h5>
-        <p class="fade-stagger">Static Post 1080x1080</p>
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="1.png" alt=""></i>
-        </div>
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="2.png" alt=""></i>
-        </div>
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="3.png" alt=""></i>
-        </div>
-
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="4.png" alt=""></i>
-        </div>
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="5.png" alt=""></i>
-        </div>
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="6.png" alt=""></i>
-        </div>
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="7.jpg" alt=""></i>
-        </div>
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="8.png" alt=""></i>
-        </div>
-      </div>
-    </div>
-    <div class="container py-5">
-
-      <div class="row">
-
-        <div class="col-md-2 fade-stagger">
-          <img class="img-fluid" width="100%" src="CRC-Logo.png" alt="" style="padding: 0;">
-        </div>
-        <div class="col-md-7 fade-stagger">
-          <h2 class="fade-stagger">Candon Running Community</h2>
-          <h5>Candon Running Community is a local running community that consist of podium runners and hobbyist.</h5>
-          <p>I handled their Social Media Pages Designs especially Facebook and Instagram,
-            creating
-            for event announcements, posters etc.</p>
-        </div>
-        <div class="col-md-3 fade-stagger">
-          <h5><b>Sector: </b>Sports Club/Community</h5>
-          <h5><b>Company: </b>Candon Running Community</h5>
-          <h5><b>Year: </b>2025</h5>
-          <h5><b>Work Type: </b>Graphic Design</h5>
-        </div>
-
-        <h5 class="fade-stagger" style="padding-top: 30px;">Instagram & Facebook</h5>
-        <p class="fade-stagger">Static Post 1080x1350</p>
-
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="CRC-1.png" alt=""></i>
-        </div>
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="CRC-2.png" alt=""></i>
-        </div>
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="CRC-3.png" alt=""></i>
-        </div>
-
-        <div class="col-md-3 p-2 fade-stagger">
-          <i class="hobby-icon"><img class="img-fluid" src="CRC-4.png" alt=""></i>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- website development -->
-  <section>
-    <div class="container">
-      <div class="row align-items-center">
-        <h3 class="section-title fade-stagger">Web Design</h3>
-        <div class="col-md-5 fade-stagger">
-          <img class="img-fluid" width="100%" src="Agridam.png" alt="" style="padding: 0;">
-        </div>
-        <div class="align-items-center col-md-4 fade-stagger">
-          <h2 class="fade-stagger">Agridam: IoT Early Flood Risk Monitoring and Alarm System</h2>
-          <h5>Agridam is a Early Flood Risk Monitoring and Alarm System Device that warns and updates communities about
-            current flood water level</h5>
-          <h6>I Developed an IoT-based Device and a Monitoring Website to monitor the datas captured by the device.</h6>
-        </div>
-        <div class="align-items-center col-md-3 fade-stagger">
-          <h5><b>Sector: </b>Flood Prediction / Flood Monitoring</h5>
-          <h5><b>Company: </b>Personal Project</h5>
-          <h5><b>Year: </b>2023</h5>
-          <h5><b>Work Type: </b>IoT,Arduino, C++, Firebase Realtime Database, Website Design</h5>
-          <h5><b>Link: </b><a
-              class="link-info link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-              href="https://agridamiot-8059c.web.app/devices.html">Visit Website</a> usrn/pw:admin</h5>
-        </div>
-      </div>
-    </div>
-    <!-- 2nd -->
-    <div class="container">
-      <div class="row align-items-center">
-
-        <div class="align-items-center col-md-4 fade-stagger">
-          <h2 class="fade-stagger">Sublaten Hardware Shop</h2>
-          <h5>Sublaten Hardware is a local hardware store located in Galimuyod, Ilocos Sur</h5>
-          <h6>I Developed a Basic CRUD System for that allows them to monitor and categorize their stocks.</h6>
-        </div>
-
-
-        <div class="col-md-5 fade-stagger">
-          <img class="img-fluid" width="100%" src="sublaten.png" alt="" style="padding: 0;">
-        </div>
-        <div class="align-items-center col-md-3 fade-stagger">
-          <h5><b>Sector: </b>Hardware</h5>
-          <h5><b>Company: </b>Sublaten</h5>
-          <h5><b>Year: </b>2022</h5>
-          <h5><b>Work Type: </b>SQL, PHP, Website Design</h5>
-          <h5><b>Link: </b><a
-              class="link-info link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-              href="https://sublatenhardware.ml">Visit Website</a></h5>
-        </div>
-      </div>
-    </div>
-    <!-- 3rd -->
-    <div class="container">
-      <div class="row align-items-center">
-
-
-        <div class="align-items-center col-md-4 fade-stagger">
-          <h2 class="fade-stagger">Alon Kia'i</h2>
-          <h5>Alon Kia'i is an advocate of ocean life, marine organisms, aquatic animals, sea creatures, marine
-            creatures, and aquatic life </h5>
-          <h6>I Developed a Landing Page with that attracts traffic and showcase company's agenda.</h6>
-        </div>
-
-        <div class="align-items-center col-md-3 fade-stagger">
-          <h5><b>Sector: </b>Non-Government Organization</h5>
-          <h5><b>Company: </b>Alon Kia'i</h5>
-          <h5><b>Year: </b>2020</h5>
-          <h5><b>Work Type: </b>Website Design</h5>
-          <h5><b>Link: </b><a
-              class="link-info link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-              href="https://alonkiai.ml">Visit Website</a></h5>
-        </div>
-
-        <div class="col-md-5 fade-stagger">
-          <img class="img-fluid" width="100%" src="alon.png" alt="" style="padding: 0;">
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Latest Ventures Section -->
-  <section id="ventures" class="py-5">
-    <div class="container">
-      <h2 class="section-title text-center fade-stagger">My Latest Ventures</h2>
-      <div id="venturesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row text-center">
-              <div class="col-md-4">
-                <a href="https://www.facebook.com/SoleGrip" target="_blank">
-                  <img src="Solegrip.jpg" alt="SoleGrip" class="venture-img">
-                </a>
-                <h5 class="mt-3">SoleGrip – Shoe Grip Enhancer</h5>
-                <p>A performance-driven product for athletes, enhancing shoe traction and safety.</p>
+      <h2 class="section-title text-center fade-stagger">Reviews & Testimonials</h2>
+      <div class="row g-4">
+        <!-- Testimonial 1 -->
+        <div class="col-lg-3 col-md-6 fade-stagger">
+          <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
+            <blockquote class="blockquote">
+              <i class="bi bi-chat-quote-fill text-primary fs-3"></i>
+              <p class="fs-6 mt-2">"Solid talaga, madulas at dusty yung court namin, pero nung ina-apply ko SoleGrip, Grabe sulit talaga!"</p>
+            </blockquote>
+            <div>
+              <div class="text-warning mb-1">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
               </div>
-              <div class="col-md-4">
-                <a href="https://www.facebook.com/BaonemServices" target="_blank">
-                  <img src="Baonem.jpg" alt="Baonem" class="venture-img">
-                </a>
-                <h5 class="mt-3">Baonem – Errand Services</h5>
-                <p>We help you move your documents, parcel and products. Fast & Affordable.</p>
-              </div>
-              <div class="col-md-4">
-                <a href="https://www.facebook.com/WTGWHERESTHEGOLD" target="_blank">
-                  <img src="WTG.jpg" alt="WTG" class="venture-img">
-                </a>
-                <h5 class="mt-3">WTG? - Where's The Gold</h5>
-                <p>WTG - Where's The Gold? is a streetwear clothing brand that inspires you to go for the gold.</p>
-              </div>
+              <footer class="blockquote-footer mb-0">D***F • <em>SoleGrip TikTok Shop</em></footer>
             </div>
           </div>
-          <!-- <div class="carousel-item">
-            <div class="row text-center">
-              <div class="col-md-4">
-                <a href="#" target="_blank">
-                  <img src="https://placehold.co/300x200?text=Venture+4" alt="Venture 4" class="venture-img">
-                </a>
-                <h5 class="mt-3">Venture 4</h5>
-                <p>Dummy venture description for testing the carousel layout.</p>
-              </div>
-              <div class="col-md-4">
-                <a href="#" target="_blank">
-                  <img src="https://placehold.co/300x200?text=Venture+5" alt="Venture 5" class="venture-img">
-                </a>
-                <h5 class="mt-3">Venture 5</h5>
-                <p>Dummy venture description for testing the carousel layout.</p>
-              </div>
-              <div class="col-md-4">
-                <a href="#" target="_blank">
-                  <img src="https://placehold.co/300x200?text=Venture+6" alt="Venture 6" class="venture-img">
-                </a>
-                <h5 class="mt-3">Venture 6</h5>
-                <p>Dummy venture description for testing the carousel layout.</p>
-              </div>
-            </div>
-          </div> -->
-        </div>
-        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#venturesCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#venturesCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button> -->
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Testimonials -->
-  <section id="testimonials" class="py-5">
-    <div class="container">
-      <h2 class="section-title text-center fade-stagger">Reviews and Testimonials</h2>
-      <div class="row align-items-center">
-        <!-- testemonial 1 -->
-        <div class="col-md-3 col-sm-6 fade-stagger">
-          <blockquote class="blockquote">
-            <div class="mt-3">
-              <i class="bi bi-chat-quote-fill text-primary fs-2"></i>
-              <!-- Or replace with <img src="logo.png" width="40" alt="logo"> -->
-            </div>
-            <p class="text-justify">Solid talaga madulas at dusty yung court namin, walang traction JT1 Shoes ko pero
-              nung ina-apply ko SoleGrip, Grabe sulit talaga!”</p>
-            <div class="text-center text-warning mb-2">
-              <h6 class="text-darks">Ratings: 4.5%</h6>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-half"></i>
-            </div>
-            <footer class="blockquote-footer">D***F • <em>SoleGrip Tiktok Shop</em></footer>
-          </blockquote>
         </div>
 
-        <!-- testemonial 2 -->
-        <div class="col-md-3 col-sm-6 fade-stagger">
-          <blockquote class="blockquote">
-            <div class="mt-3">
-              <i class="bi bi-chat-quote-fill text-primary fs-2"></i>
-              <!-- Or replace with <img src="logo.png" width="40" alt="logo"> -->
+        <!-- Testimonial 2 -->
+        <div class="col-lg-3 col-md-6 fade-stagger">
+          <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
+            <blockquote class="blockquote">
+              <i class="bi bi-chat-quote-fill text-primary fs-3"></i>
+              <p class="fs-6 mt-2">"This is lit, effective yung product, kudos👌"</p>
+            </blockquote>
+            <div>
+              <div class="text-warning mb-1">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+              </div>
+              <footer class="blockquote-footer mb-0">thearah • <em>SoleGrip Shopee Shop</em></footer>
             </div>
-            <p class="text-justify">This is lit, effective yung product, kudos👌”</p>
-            <div class="text-center text-warning mb-2">
-              <h6 class="text-darks">Ratings: 4.8%</h6>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-half"></i>
-            </div>
-            <footer class="blockquote-footer">thearah • <em>SoleGrip Shopee Shop</em></footer>
-          </blockquote>
+          </div>
         </div>
-        <!-- testemonial 3 -->
-        <div class="col-md-3 fade-stagger">
-          <blockquote class="blockquote">
-            <div class="mt-3">
-              <i class="bi bi-chat-quote-fill text-primary fs-2"></i>
-              <!-- Or replace with <img src="logo.png" width="40" alt="logo"> -->
+
+        <!-- Testimonial 3 -->
+        <div class="col-lg-3 col-md-6 fade-stagger">
+          <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
+            <blockquote class="blockquote">
+              <i class="bi bi-chat-quote-fill text-primary fs-3"></i>
+              <p class="fs-6 mt-2">"Super maaasahan talaga and hindi ka magdadalawang isip kasi mahaba patience. Di ka mahihiya kasi madali lang sila kausap"</p>
+            </blockquote>
+            <div>
+              <footer class="blockquote-footer mb-0">Ynna Inigo • <em>Baonem Facebook Page</em></footer>
             </div>
-            <p class="text-justify">Super maaasahan talaga and hindi ka magdadalawang isip kasi mahaba patience. Di ka
-              mahihiya kasi madali lang sila kausap”</p>
-            <footer class="blockquote-footer">Ynna Inigo • <em>Baonem Facebook Page</em></footer>
-          </blockquote>
+          </div>
         </div>
-        <!-- testemonial 4 -->
-        <div class="col-md-3 fade-stagger">
-          <blockquote class="blockquote">
-            <div class="mt-3">
-              <i class="bi bi-chat-quote-fill text-primary fs-2"></i>
-              <!-- Or replace with <img src="logo.png" width="40" alt="logo"> -->
+
+        <!-- Testimonial 4 -->
+        <div class="col-lg-3 col-md-6 fade-stagger">
+          <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
+            <blockquote class="blockquote">
+              <i class="bi bi-chat-quote-fill text-primary fs-3"></i>
+              <p class="fs-6 mt-2">"Sobrang quality, from the first design consistent at nag-iimprove pa! #Gold"</p>
+            </blockquote>
+            <div>
+              <footer class="blockquote-footer mb-0">Lester Castro • <em>WTG? Facebook Page</em></footer>
             </div>
-            <p class="text-justify">Sobrang quality, from the first design consistent at nag-iimprove pa! #Gold”</p>
-            <footer class="blockquote-footer">Lester Castro • <em>WTG? Facebook Page</em></footer>
-          </blockquote>
+          </div>
         </div>
       </div>
     </div>
   </section>
-
-
-
-  <!-- Education Section -->
-  <!-- <section id="education" class="py-5 bg-light">
-    <div class="container text-center">
-      <h2 class="section-title fade-stagger">Education</h2>
-      <div class="fade-stagger">
-        <h5>Bachelor of Science in Computer Science</h5>
-        <p><em>University of Northern Philippines – 2024</em></p>
-        <p>Thesis: <strong>Agridam: IoT Early Flood Risk Monitoring and Alarm System</strong></p>
-        <p>General Weighted Average: <strong>1.8</strong></p>
-      </div>
-
-    </div>
-  </section> -->
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Metmet. All rights reserved.</p>
+    <div class="container">
+      <p class="mb-0">&copy; 2026 Metmet. All rights reserved.</p>
+    </div>
   </footer>
 
   <!-- Bootstrap JS from CDN -->
@@ -672,14 +912,35 @@
           entry.target.classList.add('visible');
           const children = entry.target.querySelectorAll('.fade-stagger');
           children.forEach((child, index) => {
-            child.style.transitionDelay = `${index * 0.2}s`;
+            child.style.transitionDelay = `${index * 0.15}s`;
           });
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.1 });
 
     sections.forEach(section => {
       observer.observe(section);
+    });
+
+    // Auto-close responsive mobile navbar when a link is clicked
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const menuCollapse = document.getElementById('navbarNav');
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (menuCollapse.classList.contains('show')) {
+          new bootstrap.Collapse(menuCollapse).toggle();
+        }
+      });
+    });
+
+    // Form Submission Handling
+    document.getElementById('bookingFunnelForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Thank you! Your booking request has been submitted successfully.');
+      const modalElement = document.getElementById('bookingModal');
+      const modalInstance = bootstrap.Modal.getInstance(modalElement);
+      modalInstance.hide();
+      this.reset();
     });
   </script>
 </body>
