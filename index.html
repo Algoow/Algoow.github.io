@@ -155,17 +155,20 @@
       margin-bottom: 10px;
     }
 
-    .social-icons a {
-      color: #34656D;
+    /* Fixed & Consolidated Social Icons Styling */
+    .social-icons a,
+    .social-link {
+      color: #34656D !important;
       font-size: 1.5rem;
-      margin-right: 15px;
       display: inline-block;
-      transition: transform 0.3s;
+      transition: all 0.3s ease;
+      text-decoration: none;
     }
 
-    .social-icons a:hover {
-      transform: scale(1.3);
-      color: #334443;
+    .social-icons a:hover,
+    .social-link:hover {
+      transform: scale(1.2);
+      color: #1e3d43 !important;
     }
 
     /* Updated Book Now Button UI */
@@ -264,27 +267,33 @@
   </nav>
 
   <!-- Header -->
-  <header>
-    <div class="container">
-      <div class="row align-items-center flex-column-reverse flex-lg-row">
-        <div class="col-lg-8 text-lg-start text-center mt-4 mt-lg-0">
-          <h2 class="fade-stagger" style="font-family: 'Bebas Neue';">Hello, I'm</h2>
-          <h1 class="intro-hello fade-stagger">METEOR ORDONA</h1>
-          <h3 style="font-family: 'Bebas Neue';" class="fade-stagger">Entrepreneur | Social Media Manager | Graphic Designer | Web Developer</h3>
-          <p class="text-md-start text-center">A Tech Savvy Entrepreneur with expertise in digital marketing, brand development, and creative media. Skilled in web development, video editing, graphic designing, and social media strategy with a strong background in entrepreneurship and nonprofit leadership. Founder of three ventures in sports performance, clothing industry, and logistics.</p>
-          <div class="social-icons mt-4 fade-stagger">
-            <a href="https://www.facebook.com/Algorhythmo"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-twitter"></i></a>
-            <a href="https://www.instagram.com/Algorhythmo"><i class="bi bi-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/meteorordona/"><i class="bi bi-linkedin"></i></a>
+  <header class="relative min-vh-100 d-flex align-items-center py-5 text-brand">
+    <div class="container relative z-10">
+      <div class="row align-items-center flex-column-reverse flex-lg-row g-4">
+        <div class="col-lg-8 text-center text-lg-start">
+          <h2 class="font-bebas h3 fade-stagger">Hello, I'm</h2>
+          <h1 class="font-lilita display-1 fw-bold leading-tight fade-stagger">METEOR ORDONA</h1>
+          <h3 class="font-bebas h4 text-muted mt-1 fade-stagger">
+            Entrepreneur | Digital Marketer | AI Workflow Automator | Graphic Designer | Web Developer
+          </h3>
+          <p class="mt-3 text-secondary lead-sm fade-stagger">
+            A Tech-Savvy Entrepreneur, Digital Marketer, and AI Workflow Automator specializing in scalable brand growth, automated business systems, and end-to-end creative media. Proficient in full-stack web development, SEO, search and social media strategy, video editing, and custom visual design—backed by a solid track record in startup execution and nonprofit leadership. Founder of three ventures spanning sports performance, streetwear apparel, and local logistics.
+          </p>
+          
+          <div class="d-flex justify-content-center justify-content-lg-start gap-3 fs-4 mt-4 fade-stagger social-icons">
+            <a href="https://www.facebook.com/Algorhythmo" target="_blank" class="social-link" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link" title="Twitter"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.instagram.com/Algorhythmo" target="_blank" class="social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/meteorordona/" target="_blank" class="social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
           </div>
-          <!-- Updated UI Book Now Button -->
-          <button type="button" class="btn btn-book-now mt-4 fade-stagger" data-bs-toggle="modal" data-bs-target="#bookingModal">
-            <i class="bi bi-calendar-check-fill"></i> Book Now
+
+          <button data-bs-toggle="modal" data-bs-target="#bookingModal" type="button" class="btn btn-book-now btn-m rounded-pill fw-bold text-uppercase mt-4 shadow fade-stagger">
+            <i class="bi bi-calendar-check-fill me-2"></i> Book Now
           </button>
         </div>
+        
         <div class="col-lg-4 text-center fade-stagger">
-          <img src="metmet.png" alt="Portrait" class="intro-img img-fluid">
+          <img src="metmet.png" alt="Meteor Ordona" class="img-fluid max-w-80">
         </div>
       </div>
     </div>
@@ -302,20 +311,23 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-4">
-          <form id="bookingFunnelForm">
+          <form id="bookingFunnelForm" novalidate>
             <div class="mb-3">
               <label for="fullName" class="form-label fw-semibold">Full Name *</label>
               <input type="text" class="form-control" id="fullName" placeholder="e.g. John Doe" required>
+              <div class="invalid-feedback">Please enter your full name.</div>
             </div>
             
             <div class="mb-3">
               <label for="emailAddress" class="form-label fw-semibold">Email Address *</label>
               <input type="email" class="form-control" id="emailAddress" placeholder="e.g. john@example.com" required>
+              <div class="invalid-feedback">Please enter a valid email address.</div>
             </div>
 
             <div class="mb-3">
               <label for="contactNumber" class="form-label fw-semibold">Contact Number *</label>
-              <input type="tel" class="form-control" id="contactNumber" placeholder="e.g. +63 912 345 6789" required>
+              <input type="tel" class="form-control" id="contactNumber" placeholder="e.g. 09171234567 or +639171234567" required>
+              <div class="invalid-feedback">Please enter a valid Philippine mobile number (e.g., 09171234567 or +639171234567).</div>
             </div>
 
             <div class="mb-3">
@@ -330,6 +342,7 @@
                 <option value="Consultation & Strategy">Consultation & Strategy</option>
                 <option value="Other">Other Custom Service</option>
               </select>
+              <div class="invalid-feedback">Please select a service option.</div>
             </div>
 
             <div class="mb-3">
@@ -337,10 +350,30 @@
               <textarea class="form-control" id="projectDetails" rows="4" placeholder="Tell me a bit about your project, timeline, or requirements..."></textarea>
             </div>
 
+            <div id="formErrorMessage" class="text-danger small mb-2 d-none">
+              <i class="bi bi-exclamation-triangle-fill me-1"></i> There was an error submitting your request. Please check all fields and try again.
+            </div>
+
             <button type="submit" class="btn btn-book-now w-100 justify-content-center mt-2">
               Submit Request <i class="bi bi-send-fill ms-1"></i>
             </button>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow text-center p-4">
+        <div class="modal-body p-3">
+          <div class="text-success mb-3">
+            <i class="bi bi-check-circle-fill display-1" style="color: #34656D;"></i>
+          </div>
+          <h3 class="fw-bold mb-2" style="color: #34656D;">Request Received!</h3>
+          <p class="text-secondary mb-4">Thank you for reaching out. Your booking request has been successfully transmitted and I'll get back to you soon.</p>
+          <button type="button" class="btn btn-book-now px-4" data-bs-dismiss="modal">Great, thanks!</button>
         </div>
       </div>
     </div>
@@ -437,13 +470,11 @@
           <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
           <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
           <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="5" aria-label="Slide 5"></button>
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
         </div>
 
-        <!-- Carousel Slides (Newest to Oldest) -->
+        <!-- Carousel Slides -->
         <div class="carousel-inner rounded">
-          
-          <!-- Slide 1: Digital Marketing -->
           <div class="carousel-item active">
             <div class="row g-0 align-items-center bg-white p-3 p-md-4">
               <div class="col-md-7 cert-img-container rounded p-2">
@@ -458,7 +489,6 @@
             </div>
           </div>
 
-          <!-- Slide 2: Technical Project Manager -->
           <div class="carousel-item">
             <div class="row g-0 align-items-center bg-white p-3 p-md-4">
               <div class="col-md-7 cert-img-container rounded p-2">
@@ -473,7 +503,6 @@
             </div>
           </div>
 
-          <!-- Slide 3: NetOps Certified Engineer -->
           <div class="carousel-item">
             <div class="row g-0 align-items-center bg-white p-3 p-md-4">
               <div class="col-md-7 cert-img-container rounded p-2">
@@ -488,7 +517,6 @@
             </div>
           </div>
 
-          <!-- Slide 4: Cybersecurity Professional -->
           <div class="carousel-item">
             <div class="row g-0 align-items-center bg-white p-3 p-md-4">
               <div class="col-md-7 cert-img-container rounded p-2">
@@ -503,7 +531,6 @@
             </div>
           </div>
 
-          <!-- Slide 5: Social Media Certified -->
           <div class="carousel-item">
             <div class="row g-0 align-items-center bg-white p-3 p-md-4">
               <div class="col-md-7 cert-img-container rounded p-2">
@@ -517,24 +544,20 @@
               </div>
             </div>
           </div>
-<!-- Slide 6 (Add inside #cert-carousel .carousel-inner) -->
-<div class="carousel-item">
-  <div class="row g-4 align-items-center p-4">
-    <div class="col-md-7 text-center">
-      <div class="bg-light p-2 rounded border">
-        <img src="SEO.jpeg" class="img-fluid rounded max-h-380" alt="SEO with Squarespace Certificate">
-      </div>
-    </div>
-    <div class="col-md-5">
-      <h5 class="fw-bold text-brand mb-1">Search Engine Optimization (SEO) with Squarespace</h5>
-      <p class="text-muted small mb-2"><em>Issued by Coursera ● Sep 28, 2025</em></p>
-      <p class="text-xs font-monospace mb-3"><strong>Credential ID:</strong>7W95O2Y88PPU</p>
-      <p class="text-secondary small">
-        Demonstrates practical capability in planning, configuring, and optimizing search engine optimization (SEO) settings, keyword placement, and metadata within Squarespace websites to drive organic traffic.
-      </p>
-    </div>
-  </div>
-</div>
+
+          <div class="carousel-item">
+            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
+              <div class="col-md-7 cert-img-container rounded p-2">
+                <img src="SEO.jpeg" class="img-fluid rounded border" alt="SEO with Squarespace Certificate">
+              </div>
+              <div class="col-md-5 p-4">
+                <h5>Search Engine Optimization (SEO) with Squarespace</h5>
+                <p class="text-muted"><em>Issued by Coursera ● Sep 28, 2025</em></p>
+                <p><strong>Credential ID:</strong> <code>7W95O2Y88PPU</code></p>
+                <p>Demonstrates practical capability in planning, configuring, and optimizing search engine optimization (SEO) settings, keyword placement, and metadata within Squarespace websites to drive organic traffic.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Controls -->
@@ -547,7 +570,6 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-
     </div>
   </section>
 
@@ -555,11 +577,8 @@
   <section id="clients" class="py-5 bg-light">
     <div class="container">
       <h2 class="section-title text-center fade-stagger">Clients & Works</h2>
-      
-      <!-- GRAPHIC DESIGN SECTION TITLE -->
       <h3 class="fade-stagger mb-4 text-center text-lg-start">GRAPHIC DESIGN</h3>
 
-      <!-- Graphic Design Client 1: JCI -->
       <div class="row g-4 align-items-center mb-5 fade-stagger">
         <div class="col-lg-2 col-md-3 text-center">
           <img class="img-fluid rounded mb-3 mb-md-0" style="max-height: 120px;" src="JCI.png" alt="JCI Logo">
@@ -576,7 +595,6 @@
           <p class="mb-1"><b>Work Type:</b> Graphic Design</p>
         </div>
 
-        <!-- JCI Visuals Carousel -->
         <div class="col-12 mt-3">
           <h5 class="mb-1">Instagram & Facebook Visuals</h5>
           <p class="text-muted">Static Posts (1080x1080)</p>
@@ -616,7 +634,6 @@
         </div>
       </div>
 
-      <!-- Graphic Design Client 2: CRC -->
       <div class="row g-4 align-items-center mt-5 fade-stagger">
         <div class="col-lg-2 col-md-3 text-center">
           <img class="img-fluid rounded mb-3 mb-md-0" style="max-height: 120px;" src="CRC-Logo.png" alt="CRC Logo">
@@ -633,7 +650,6 @@
           <p class="mb-1"><b>Work Type:</b> Graphic Design</p>
         </div>
 
-        <!-- CRC Visuals Carousel -->
         <div class="col-12 mt-3">
           <h5 class="mb-1">Instagram & Facebook Visuals</h5>
           <p class="text-muted">Static Posts (1080x1350)</p>
@@ -672,7 +688,6 @@
     <div class="container">
       <h3 class="section-title fade-stagger text-center text-lg-start mb-4">Web Design & Development</h3>
       
-      <!-- Web Project 1 -->
       <div class="row g-4 align-items-center mb-5">
         <div class="col-lg-5 fade-stagger order-1 order-lg-1">
           <img class="img-fluid rounded shadow-sm" src="Agridam.png" alt="Agridam Screenshot">
@@ -691,7 +706,6 @@
         </div>
       </div>
 
-      <!-- Web Project 2 -->
       <div class="row g-4 align-items-center mb-5">
         <div class="col-lg-5 fade-stagger order-1 order-lg-2">
           <img class="img-fluid rounded shadow-sm" src="sublaten.png" alt="Sublaten Screenshot">
@@ -710,7 +724,6 @@
         </div>
       </div>
 
-      <!-- Web Project 3 -->
       <div class="row g-4 align-items-center">
         <div class="col-lg-5 fade-stagger order-1 order-lg-2">
           <img class="img-fluid rounded shadow-sm" src="alon.png" alt="Alon Kiai Screenshot">
@@ -809,7 +822,6 @@
         </div>
       </div>
 
-      <!-- Professional Note -->
       <div class="row mt-5">
         <div class="col-12 text-center fade-stagger">
           <p class="text-muted fst-italic">
@@ -825,7 +837,6 @@
     <div class="container">
       <h2 class="section-title text-center fade-stagger">Reviews & Testimonials</h2>
       <div class="row g-4">
-        <!-- Testimonial 1 -->
         <div class="col-lg-3 col-md-6 fade-stagger">
           <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
             <blockquote class="blockquote">
@@ -845,7 +856,6 @@
           </div>
         </div>
 
-        <!-- Testimonial 2 -->
         <div class="col-lg-3 col-md-6 fade-stagger">
           <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
             <blockquote class="blockquote">
@@ -865,7 +875,6 @@
           </div>
         </div>
 
-        <!-- Testimonial 3 -->
         <div class="col-lg-3 col-md-6 fade-stagger">
           <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
             <blockquote class="blockquote">
@@ -878,7 +887,6 @@
           </div>
         </div>
 
-        <!-- Testimonial 4 -->
         <div class="col-lg-3 col-md-6 fade-stagger">
           <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
             <blockquote class="blockquote">
@@ -922,7 +930,7 @@
       observer.observe(section);
     });
 
-    // Auto-close responsive mobile navbar when a link is clicked
+    // Auto-close responsive mobile navbar on link click
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     const menuCollapse = document.getElementById('navbarNav');
     navLinks.forEach((link) => {
@@ -933,14 +941,116 @@
       });
     });
 
-    // Form Submission Handling
-    document.getElementById('bookingFunnelForm').addEventListener('submit', function (e) {
+    // Form Elements Selection
+    const bookingForm = document.getElementById('bookingFunnelForm');
+    const formErrorMsg = document.getElementById('formErrorMessage');
+    const fullNameInput = document.getElementById('fullName');
+    const emailInput = document.getElementById('emailAddress');
+    const contactInput = document.getElementById('contactNumber');
+    const serviceInput = document.getElementById('serviceSelect');
+
+    // Regex Validation Logic
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const phMobileRegex = /^(09|\+?639)\d{9}$/;
+
+    function validateField(input, isValid) {
+      if (isValid) {
+        input.classList.remove('is-invalid');
+        input.classList.add('is-valid');
+      } else {
+        input.classList.remove('is-valid');
+        input.classList.add('is-invalid');
+      }
+      return isValid;
+    }
+
+    // Real-Time (Live Typing) Field Validators
+    fullNameInput.addEventListener('input', () => {
+      validateField(fullNameInput, fullNameInput.value.trim().length > 0);
+    });
+
+    emailInput.addEventListener('input', () => {
+      validateField(emailInput, emailRegex.test(emailInput.value.trim()));
+    });
+
+    contactInput.addEventListener('input', () => {
+      validateField(contactInput, phMobileRegex.test(contactInput.value.trim()));
+    });
+
+    serviceInput.addEventListener('change', () => {
+      validateField(serviceInput, serviceInput.value !== '');
+    });
+
+    // Form Submission Handler
+    bookingForm.addEventListener('submit', async function (e) {
       e.preventDefault();
-      alert('Thank you! Your booking request has been submitted successfully.');
-      const modalElement = document.getElementById('bookingModal');
-      const modalInstance = bootstrap.Modal.getInstance(modalElement);
-      modalInstance.hide();
-      this.reset();
+      formErrorMsg.classList.add('d-none');
+
+      // Execute full validation check across all required fields
+      const isNameValid = validateField(fullNameInput, fullNameInput.value.trim().length > 0);
+      const isEmailValid = validateField(emailInput, emailRegex.test(emailInput.value.trim()));
+      const isContactValid = validateField(contactInput, phMobileRegex.test(contactInput.value.trim()));
+      const isServiceValid = validateField(serviceInput, serviceInput.value !== '');
+
+      if (!isNameValid || !isEmailValid || !isContactValid || !isServiceValid) {
+        formErrorMsg.classList.remove('d-none');
+        return;
+      }
+
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerHTML;
+
+      const payload = {
+        fullName: fullNameInput.value.trim(),
+        emailAddress: emailInput.value.trim(),
+        contactNumber: contactInput.value.trim(),
+        serviceNeeded: serviceInput.value,
+        projectDetails: document.getElementById('projectDetails').value.trim(),
+        submittedAt: new Date().toISOString()
+      };
+
+      const WEBHOOK_URL = 'https://hook.us2.make.com/uc1o76ga6ef7aple6r5ep3h27d8omil7';
+
+      try {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending... <span class="spinner-border spinner-border-sm ms-1" role="status"></span>';
+
+        const response = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          // Reset Form and remove field styles
+          this.reset();
+          [fullNameInput, emailInput, contactInput, serviceInput].forEach(field => {
+            field.classList.remove('is-valid', 'is-invalid');
+          });
+
+          // Hide Booking Modal
+          const bookingModalEl = document.getElementById('bookingModal');
+          const bookingModalInstance = bootstrap.Modal.getInstance(bookingModalEl);
+          if (bookingModalInstance) {
+            bookingModalInstance.hide();
+          }
+
+          // Show Success Modal
+          const successModalEl = document.getElementById('successModal');
+          const successModalInstance = new bootstrap.Modal(successModalEl);
+          successModalInstance.show();
+        } else {
+          formErrorMsg.classList.remove('d-none');
+        }
+      } catch (error) {
+        console.error('Webhook Error:', error);
+        formErrorMsg.classList.remove('d-none');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+      }
     });
   </script>
 </body>
