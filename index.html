@@ -4,129 +4,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Meteor Ordona</title>
+  <title>Meteor V. Ordoña | Hire Me</title>
+  <link rel="icon" type="image/png" href="metmet.png">
   <!-- Bootstrap CSS from CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
+    :root {
+      --bg-primary: #0a0d14;
+      --bg-secondary: #121824;
+      --bg-card: #182232;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(56, 189, 248, 0.4);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+
+    /* Industrial Grid Background Effect */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 32px 32px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      background-color: rgba(10, 13, 20, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.75rem 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand img {
+      height: 36px;
+      width: auto;
+      filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.3));
+    }
+
+    .nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted) !important;
+      transition: color 0.2s ease;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent-cyan) !important;
+    }
+
+    .navbar-toggler {
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(1) grayscale(100%) brightness(200%);
+    }
+
+    /* Header Section */
     header {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background-size: cover;
       position: relative;
-      color: #34656D;
-      overflow: hidden;
-      padding-top: 80px;
-      padding-bottom: 40px;
+      background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                  radial-gradient(circle at 10% 80%, rgba(14, 165, 233, 0.03) 0%, transparent 50%);
+      padding-top: 100px;
+      padding-bottom: 60px;
     }
 
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('header-bg.png');
-      z-index: 0;
+    .hero-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: var(--accent-glow);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 6px 14px;
+      border-radius: 4px;
+      display: inline-block;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
     }
 
-    header .container {
-      position: relative;
-      z-index: 1;
+    /* Typography & Core Elements */
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--text-main);
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
-    .navbar {
-      padding: 0.5rem 1rem;
-      backdrop-filter: blur(8px);
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-
-    .navbar-brand img {
-      height: 40px;
-      width: auto;
-    }
-
-    .nav-link {
-      font-weight: 500;
-      margin-left: 0;
-      color: #34656D;
-    }
-
-    @media (min-width: 992px) {
-      .nav-link {
-        margin-left: 15px;
-      }
-    }
-
-    .nav-link:hover {
-      color: #1e3d43 !important;
+    b, strong {
+      color: var(--text-main);
     }
 
     .section-title {
-      margin-bottom: 30px;
-      font-weight: bold;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #34656D;
+      letter-spacing: 0.15em;
+      color: var(--accent-cyan);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    footer {
-      background: #f8f9fa;
-      padding: 20px;
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    .venture-img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
-
-    .venture-img:hover {
-      transform: scale(1.05);
-    }
-
-    .intro-img {
-      max-width: 80%;
-      height: auto;
-    }
-
-    @media (min-width: 768px) {
-      .intro-img {
-        max-width: 100%;
-      }
-    }
-
-    .intro-hello {
-      font-size: clamp(3rem, 8vw, 6.25rem);
-      font-family: "Lilita One", sans-serif;
-      line-height: 1.1;
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border-color);
+      max-width: 120px;
     }
 
     section {
-      min-height: auto;
-      padding-top: 60px;
-      padding-bottom: 60px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding-top: 100px;
+      padding-bottom: 100px;
+      border-bottom: 1px solid var(--border-color);
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transform: translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     section.visible {
@@ -137,7 +164,7 @@
     section .fade-stagger {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
     }
 
     section.visible .fade-stagger {
@@ -146,94 +173,270 @@
     }
 
     html {
-      scroll-padding-top: 70px;
+      scroll-padding-top: 80px;
     }
 
-    .hobby-icon {
-      font-size: 2rem;
-      color: #34656D;
-      margin-bottom: 10px;
+    /* Industrial Cards & Components */
+    .industrial-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.75rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      height: 100%;
+      position: relative;
     }
 
-    /* Fixed & Consolidated Social Icons Styling */
-    .social-icons a,
-    .social-link {
-      color: #34656D !important;
-      font-size: 1.5rem;
-      display: inline-block;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .social-icons a:hover,
-    .social-link:hover {
-      transform: scale(1.2);
-      color: #1e3d43 !important;
-    }
-
-    /* Updated Book Now Button UI */
-    .btn-book-now {
-      background: linear-gradient(135deg, #34656D 0%, #1e3d43 100%);
-      color: #ffffff;
-      padding: 12px 32px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border: none;
-      border-radius: 50px;
-      box-shadow: 0 4px 15px rgba(52, 101, 109, 0.4);
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-book-now:hover {
-      background: linear-gradient(135deg, #1e3d43 0%, #0f2226 100%);
-      color: #ffffff;
+    .industrial-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.1);
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(52, 101, 109, 0.6);
     }
 
-    .btn-book-now:active {
-      transform: translateY(1px);
-    }
-
-    h1, h2, h3, h4, h5 {
-      color: #34656D;
-    }
-
-    b {
-      color: black;
-    }
-
-    /* Carousel Custom Styling */
-    .cert-img-container,
-    .design-img-container {
-      max-height: 480px;
+    /* Uniform Web Project Image Container Styling */
+    .web-proj-img-wrap {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #f8f9fa;
+      overflow: hidden;
+      padding: 0.75rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .industrial-card:hover .web-proj-img-wrap {
+      border-color: var(--border-hover);
+    }
+
+    .web-proj-img-wrap img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+
+    .web-proj-img-wrap:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Buttons */
+    .btn-book-now {
+      background: var(--text-main);
+      color: var(--bg-primary);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .btn-book-now:hover {
+      background: var(--accent-cyan);
+      color: var(--bg-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-outline-custom {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 10px 22px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline-custom:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      background: var(--accent-glow);
+    }
+
+    .nav-link-book-btn {
+      background: var(--accent-cyan) !important;
+      color: var(--bg-primary) !important;
+      font-family: var(--font-mono) !important;
+      padding: 8px 18px !important;
+      border-radius: 4px !important;
+      font-weight: 700 !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .nav-link-book-btn:hover {
+      background: #7dd3fc !important;
+      transform: translateY(-1px);
+    }
+
+    /* Social Icons */
+    .social-icons a, .social-link {
+      color: var(--text-muted) !important;
+      font-size: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover, .social-link:hover {
+      color: var(--accent-cyan) !important;
+      border-color: var(--accent-cyan);
+      background: var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Venture & Media Images */
+    .venture-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .venture-img:hover {
+      transform: scale(1.02);
+      border-color: var(--accent-cyan);
+    }
+
+    .intro-img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      filter: grayscale(15%) contrast(105%);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    /* Carousels */
+    .cert-img-container,
+    .design-img-container {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
     }
 
     .cert-img-container img,
     .design-img-container img {
-      max-height: 450px;
+      max-height: 380px;
+      width: auto;
+      max-width: 100%;
       object-fit: contain;
-      width: 100%;
+      border-radius: 4px;
+    }
+
+    .carousel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 2rem;
     }
 
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
-      background-color: rgba(52, 101, 109, 0.8);
-      border-radius: 50%;
-      padding: 15px;
-      background-size: 50% 50%;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      background-size: 40% 40%;
+      width: 44px;
+      height: 44px;
     }
 
     .carousel-indicators [data-bs-target] {
-      background-color: #34656D;
+      background-color: var(--text-muted);
+      height: 4px;
+      border-radius: 2px;
+    }
+
+    .carousel-indicators .active {
+      background-color: var(--accent-cyan);
+    }
+
+    /* Forms & Inputs */
+    .form-control, .form-select {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+
+    .form-control:focus, .form-select:focus {
+      background-color: var(--bg-secondary);
+      border-color: var(--accent-cyan);
+      color: var(--text-main);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .form-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    code {
+      font-family: var(--font-mono);
+      color: var(--accent-cyan);
+      background: var(--accent-glow);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.85em;
+    }
+
+    .form-control::placeholder, 
+    .form-select::placeholder {
+      color: rgba(255, 255, 255, 0.6) !important;
+      opacity: 1; /* Ensures consistent opacity across different browsers */
+    }
+
+    /* Specifically for select dropdown default option when unselected */
+    .form-select option[value=""][disabled] {
+      color: #94a3b8;
     }
   </style>
 </head>
@@ -241,7 +444,7 @@
 <body>
 
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="metmet.png" alt="Logo">
@@ -252,354 +455,164 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
           <li class="nav-item"><a class="nav-link" href="#clients">Clients & Works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
           <li class="nav-item"><a class="nav-link" href="#ventures">Ventures</a></li>
-          <li class="nav-item"><a class="nav-link" href="#ngo">NGO & Voluntary Work</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ngo">NGO & Voluntary</a></li>
           <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-          <li class="nav-item"><a class="nav-link" href="resume.pdf" download title="Download my resume"><i
-                class="bi bi-download"></i> Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="resume.pdf" download title="Download my resume"><i class="bi bi-download"></i> Resume</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0"><a class="nav-link nav-link-book-btn text-center" href="#booking">Book Now</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- Header -->
-  <header class="relative min-vh-100 d-flex align-items-center py-5 text-brand">
+  <header>
     <div class="container relative z-10">
-      <div class="row align-items-center flex-column-reverse flex-lg-row g-4">
-        <div class="col-lg-8 text-center text-lg-start">
-          <h2 class="font-bebas h3 fade-stagger">Hello, I'm</h2>
-          <h1 class="font-lilita display-1 fw-bold leading-tight fade-stagger">METEOR ORDONA</h1>
-          <h3 class="font-bebas h4 text-muted mt-1 fade-stagger">
-            Entrepreneur | Digital Marketer | AI Workflow Automator | Graphic Designer | Web Developer
-          </h3>
-          <p class="mt-3 text-secondary lead-sm fade-stagger">
+      <div class="row align-items-center flex-column-reverse flex-lg-row g-5">
+        <div class="col-lg-7 text-center text-lg-start">
+          
+          <h1 class="display-3 fw-bold tracking-tight mb-3 fade-stagger">METEOR V. ORDOÑA</h1>
+          <p class="font-mono text-info mb-4 fade-stagger" style="font-size: 0.95rem;">
+            Entrepreneur // Digital Marketer // AI Workflow Automator // Graphic Designer // Web Developer
+          </p>
+          <p class="text-secondary lead fs-6 mb-4 fade-stagger">
             A Tech-Savvy Entrepreneur, Digital Marketer, and AI Workflow Automator specializing in scalable brand growth, automated business systems, and end-to-end creative media. Proficient in full-stack web development, SEO, search and social media strategy, video editing, and custom visual design—backed by a solid track record in startup execution and nonprofit leadership. Founder of three ventures spanning sports performance, streetwear apparel, and local logistics.
           </p>
           
-          <div class="d-flex justify-content-center justify-content-lg-start gap-3 fs-4 mt-4 fade-stagger social-icons">
+          <div class="d-flex justify-content-center justify-content-lg-start gap-3 mt-4 fade-stagger social-icons">
             <a href="https://www.facebook.com/Algorhythmo" target="_blank" class="social-link" title="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="social-link" title="Twitter"><i class="bi bi-twitter"></i></a>
             <a href="https://www.instagram.com/Algorhythmo" target="_blank" class="social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
             <a href="https://www.linkedin.com/in/meteorordona/" target="_blank" class="social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
           </div>
 
-          <button data-bs-toggle="modal" data-bs-target="#bookingModal" type="button" class="btn btn-book-now btn-m rounded-pill fw-bold text-uppercase mt-4 shadow fade-stagger">
-            <i class="bi bi-calendar-check-fill me-2"></i> Book Now
-          </button>
+          <div class="mt-4 fade-stagger">
+            <a href="#booking" class="btn btn-book-now">
+              <i class="bi bi-calendar-check-fill"></i> Book Now
+            </a>
+          </div>
         </div>
         
-        <div class="col-lg-4 text-center fade-stagger">
-          <img src="metmet.png" alt="Meteor Ordona" class="img-fluid max-w-80">
+        <div class="col-lg-5 text-center fade-stagger">
+          <img src="metmet.png" alt="Meteor Ordona" class="intro-img">
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Booking / Lead Funnel Modal -->
-  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content rounded-4 border-0 shadow">
-        <div class="modal-header border-0 pb-0" style="background-color: #f8f9fa;">
-          <div>
-            <h4 class="modal-title fw-bold" id="bookingModalLabel" style="color: #34656D;">Let's Work Together</h4>
-            <p class="text-muted small mb-0">Fill out this quick form and I will get back to you shortly.</p>
-          </div>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-4">
-          <form id="bookingFunnelForm" novalidate>
-            <div class="mb-3">
-              <label for="fullName" class="form-label fw-semibold">Full Name *</label>
-              <input type="text" class="form-control" id="fullName" placeholder="e.g. John Doe" required>
-              <div class="invalid-feedback">Please enter your full name.</div>
-            </div>
-            
-            <div class="mb-3">
-              <label for="emailAddress" class="form-label fw-semibold">Email Address *</label>
-              <input type="email" class="form-control" id="emailAddress" placeholder="e.g. john@example.com" required>
-              <div class="invalid-feedback">Please enter a valid email address.</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="contactNumber" class="form-label fw-semibold">Contact Number *</label>
-              <input type="tel" class="form-control" id="contactNumber" placeholder="e.g. 09171234567 or +639171234567" required>
-              <div class="invalid-feedback">Please enter a valid Philippine mobile number (e.g., 09171234567 or +639171234567).</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="serviceSelect" class="form-label fw-semibold">Service You Need *</label>
-              <select class="form-select" id="serviceSelect" required>
-                <option value="" selected disabled>Select a service...</option>
-                <option value="Graphic Design & SMM">Graphic Design & Social Media Management</option>
-                <option value="Consultation & Strategy">AI Workflow Automation</option>
-                <option value="Web Design & Development">Web Design & Development</option>
-                <option value="Video Editing">Video Editing</option>
-                <option value="Event Planning & Management">Event Planning / Management</option>
-                <option value="Consultation & Strategy">Consultation & Strategy</option>
-                <option value="Other">Other Custom Service</option>
-              </select>
-              <div class="invalid-feedback">Please select a service option.</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="projectDetails" class="form-label fw-semibold">Project Details / Message</label>
-              <textarea class="form-control" id="projectDetails" rows="4" placeholder="Tell me a bit about your project, timeline, or requirements..."></textarea>
-            </div>
-
-            <div id="formErrorMessage" class="text-danger small mb-2 d-none">
-              <i class="bi bi-exclamation-triangle-fill me-1"></i> There was an error submitting your request. Please check all fields and try again.
-            </div>
-
-            <button type="submit" class="btn btn-book-now w-100 justify-content-center mt-2">
-              Submit Request <i class="bi bi-send-fill ms-1"></i>
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Success Modal -->
-  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content rounded-4 border-0 shadow text-center p-4">
-        <div class="modal-body p-3">
-          <div class="text-success mb-3">
-            <i class="bi bi-check-circle-fill display-1" style="color: #34656D;"></i>
-          </div>
-          <h3 class="fw-bold mb-2" style="color: #34656D;">Request Received!</h3>
-          <p class="text-secondary mb-4">Thank you for reaching out. Your booking request has been successfully transmitted and I'll get back to you soon.</p>
-          <button type="button" class="btn btn-book-now px-4" data-bs-dismiss="modal">Great, thanks!</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Work Experience Section -->
-  <section id="experience" class="py-5 bg-light">
+  <!-- Clients & Works Section (Web Design & Development First + Graphic Design with Uniform Layout & Resized Images) -->
+  <section id="clients">
     <div class="container">
-      <h2 class="section-title text-center fade-stagger">Work Experience</h2>
-      <div class="row g-4">
-        <div class="col-md-6 fade-stagger">
-          <h5>Secretary General – JCI Candon City Chapter (NGO)</h5>
-          <p><em>2026 ● Newest</em></p>
-          <p>Serves as the primary administrative and coordination officer of JCI Candon Gold Leaf, working closely with the Local Organization President and Board of Directors to ensure effective communication, documentation, and implementation of chapter activities and organizational policies.</p>
-        </div>
+      <div class="section-title fade-stagger">Clients & Works // Architecture & Design</div>
+      <h2 class="h3 mb-5 fade-stagger">WEB DESIGN & DEVELOPMENT</h2>
 
-        <div class="col-md-6 fade-stagger">
-          <h5>Project Chairman and Manager /Overall Director / Creative Designer / Area Coordinator – Various Sporting Events</h5>
-          <p><em>20/10/2025 - Present ● Contractual</em></p>
-          <p>Directs overall operations, event logistics, and visual branding for major regional sports events including Sitio Korea 
-            - Calongbuyan Sportfest, IBP Run For Justice 2026, Run to End VAWC Fun Run, 
-            The Battle of Tirad Pass 100 miles Ultramarathon, Empow-Her Run Candon, 
-            Mind in Motion: A Run for Resilience and Mental Awareness and 
-            Runod Ayat Charity Race 2025.</p>
+      <!-- New Project: JCI Candon Gold Leaf Web Platform -->
+      <div class="row g-4 align-items-center mb-4 industrial-card fade-stagger mx-0">
+        <div class="col-lg-4">
+          <div class="web-proj-img-wrap">
+            <img src="JCI.png" alt="JCI Candon Gold Leaf Web Platform">
+          </div>
         </div>
-
-        <div class="col-md-6 fade-stagger">
-          <h5>Founder / Co-Founder – Candon Running Community</h5>
-          <p><em>25/04/2025 - Present</em></p>
-          <p>Co-established and leads a vibrant community of podium runners and hobbyists in Candon, overseeing organizational strategy, promotional branding, community outreach, and regular running events.</p>
+        <div class="col-lg-5">
+          <h3 class="h4">jcicandongoldleaf.org</h3>
+          <p class="text-info font-mono small">Official Web Platform for JCI Candon Gold Leaf Chapter</p>
+          <p class="text-secondary small mb-0">Engineered and deployed the official web portal for the local organization, streamlining community project disclosures, member coordination, and public outreach initiatives.</p>
         </div>
-
-        <div class="col-md-6 fade-stagger">
-          <h5>Event Floor Director / Creative Designer – Public Attorney's Office (PAO) Region 1</h5>
-          <p><em>03/12/2025 - 13/12/2025 ● Contractual Freelance</em></p>
-          <p>Managed live event floor execution, creative layout, and visual marketing assets under an agency contract to support official agency functions and regional gatherings.</p>
-        </div>
-
-        <div class="col-md-6 fade-stagger">
-          <h5>Board of Director for Business Opportunity – JCI Candon City Chapter (NGO)</h5>
-          <p><em>2025</em></p>
-          <p>Leads initiatives to connect entrepreneurs with business opportunities and promote community impact projects through JCI Programs.</p>
-        </div>
-
-        <div class="col-md-6 fade-stagger">
-          <h5>Website Developer – Freelance</h5>
-          <p><em>2022 - Present</em></p>
-          <p>Designs and deploys custom responsive web apps, landing pages, and administrative management platforms tailored to individual client goals.</p>
-        </div>
-
-        <div class="col-md-6 fade-stagger">
-          <h5>Founder/Owner – Baonem Private Errand Services</h5>
-          <p><em>2025 - Present</em></p>
-          <p>Founded and actively operates a localized delivery and errand service, organizing logistics workflows and launching targeted digital marketing campaigns.</p>
-        </div>
-
-        <div class="col-md-6 fade-stagger">
-          <h5>Video Editor – Freelance</h5>
-          <p><em>2022 - Present</em></p>
-          <p>Edited short-form highlight videos from full-length footage like wedding same-day edits (SDE) to create engaging, shareable social content.</p>
-        </div>
-
-        <div class="col-md-6 fade-stagger">
-          <h5>Founder/Owner – Solegrip</h5>
-          <p><em>2023 - Present</em></p>
-          <p>Established and manages an athletic sports performance product brand designed to improve court traction and shoe safety for athletes.</p>
-        </div>
-
-        <div class="col-md-6 fade-stagger">
-          <h5>Marketing Assistant – Unirises</h5>
-          <p><em>2021 - 2022</em></p>
-          <p>Helped launch and scale a tech startup software company by building its core digital marketing foundation from the ground up.</p>
-        </div>
-
-        <div class="col-md-6 fade-stagger">
-          <h5>Freelance Social Media Recovery Specialist</h5>
-          <p><em>2019 - 2021 ● Oldest</em></p>
-          <p>Provided account recovery assistance and consultation by helping clients regain access to compromised or lost social media handles.</p>
+        <div class="col-lg-3 font-mono small text-secondary border-start-lg border-secondary">
+          <p class="mb-1"><b>Sector:</b> NGO / Community</p>
+          <p class="mb-1"><b>Year:</b> 2026</p>
+          <p class="mb-2"><b>Tech:</b> Full-Stack, Web UI</p>
+          <a class="btn-outline-custom w-100 justify-content-center" href="https://jcicandongoldleaf.org" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Visit Platform</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Certifications Carousel Section -->
-  <section id="certifications" class="py-5">
-    <div class="container">
-      <h2 class="section-title text-center fade-stagger">Professional Certifications</h2>
       
-      <div id="certificationsCarousel" class="carousel slide shadow rounded fade-stagger" data-bs-ride="carousel">
-        <!-- Indicators -->
-        <div class="carousel-indicators mb-1">
-          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
-        </div>
-
-        <!-- Carousel Slides -->
-        <div class="carousel-inner rounded">
-          <div class="carousel-item active">
-            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
-              <div class="col-md-7 cert-img-container rounded p-2">
-                <img src="certDigital.png" class="img-fluid rounded border" alt="Digital Marketing Certified">
-              </div>
-              <div class="col-md-5 p-4">
-                <h5>Digital Marketing Certified – HubSpot Academy</h5>
-                <p class="text-muted"><em>Valid: Aug 31, 2026 – Sep 29, 2028</em></p>
-                <p><strong>Code:</strong> <code>2c675177929441f5b27f70edef29c67b</code></p>
-                <p>Demonstrates proficiency in applying inbound digital marketing strategies, SEO-friendly content creation, web optimization, multi-channel advertising, video marketing, and performance analytics.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
-              <div class="col-md-7 cert-img-container rounded p-2">
-                <img src="cert CTPM.png" class="img-fluid rounded border" alt="Certified Technical Project Manager">
-              </div>
-              <div class="col-md-5 p-4">
-                <h5>Certified Technical Project Manager – Appkademiya</h5>
-                <p class="text-muted"><em>Issued: Aug 31, 2026</em></p>
-                <p><strong>No:</strong> <code>CERT-TECHNICAL-PROJECT-MANAGER-20260830-2A2F9C7BE2E7</code></p>
-                <p>Validates core capabilities in technical project oversight, workflow structure, risk mitigation, resource coordination, and execution of complex tech initiatives.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
-              <div class="col-md-7 cert-img-container rounded p-2">
-                <img src="certNetOps.png" class="img-fluid rounded border" alt="NetOps Certified Engineer">
-              </div>
-              <div class="col-md-5 p-4">
-                <h5>NetOps Certified Engineer (NTO-101) – Appkademiya</h5>
-                <p class="text-muted"><em>Issued: Aug 31, 2026</em></p>
-                <p><strong>No:</strong> <code>CERT-NETOPS-CERTIFIED-ENGINEER-NTO101-20260830-6BF59A8E80DE</code></p>
-                <p>Certifies expertise in network operations, infrastructure configuration, system reliability maintenance, and operational network engineering standards.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
-              <div class="col-md-7 cert-img-container rounded p-2">
-                <img src="certCCP.png" class="img-fluid rounded border" alt="Certified Cybersecurity Professional">
-              </div>
-              <div class="col-md-5 p-4">
-                <h5>Certified Cybersecurity Professional (CCP) – Appkademiya</h5>
-                <p class="text-muted"><em>Issued: Aug 30, 2026</em></p>
-                <p><strong>No:</strong> <code>CERT-CCP-CYBERSECURITY-PROFESSIONAL-20260829-3500E357B4F8</code></p>
-                <p>Confirms practical knowledge of cybersecurity principles, system security controls, threat assessment, and protective digital asset management.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
-              <div class="col-md-7 cert-img-container rounded p-2">
-                <img src="certSocialmedia.png" class="img-fluid rounded border" alt="Social Media Certified">
-              </div>
-              <div class="col-md-5 p-4">
-                <h5>Social Media Certified – HubSpot Academy</h5>
-                <p class="text-muted"><em>Valid: Oct 13, 2025 – Nov 12, 2027</em></p>
-                <p><strong>Code:</strong> <code>4605d4c05a424fbba166d8380b04b7ca</code></p>
-                <p>Validates capability in building inbound social media strategies, social monitoring, content creation, community engagement, policy creation, and demonstrating social ROI.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="row g-0 align-items-center bg-white p-3 p-md-4">
-              <div class="col-md-7 cert-img-container rounded p-2">
-                <img src="SEO.jpeg" class="img-fluid rounded border" alt="SEO with Squarespace Certificate">
-              </div>
-              <div class="col-md-5 p-4">
-                <h5>Search Engine Optimization (SEO) with Squarespace</h5>
-                <p class="text-muted"><em>Issued by Coursera ● Sep 28, 2025</em></p>
-                <p><strong>Credential ID:</strong> <code>7W95O2Y88PPU</code></p>
-                <p>Demonstrates practical capability in planning, configuring, and optimizing search engine optimization (SEO) settings, keyword placement, and metadata within Squarespace websites to drive organic traffic.</p>
-              </div>
-            </div>
+      <div class="row g-4 align-items-center mb-4 industrial-card fade-stagger mx-0">
+        <div class="col-lg-4">
+          <div class="web-proj-img-wrap">
+            <img src="Agridam.png" alt="Agridam Screenshot">
           </div>
         </div>
-
-        <!-- Controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#certificationsCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#certificationsCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+        <div class="col-lg-5">
+          <h3 class="h4">Agridam: Early Flood Risk Monitoring System</h3>
+          <p class="text-info font-mono small">An IoT system alerting communities about real-time water levels.</p>
+          <p class="text-secondary small mb-0">Engineered an IoT device integrated with a live administrative tracking dashboard to log incoming sensor metrics accurately.</p>
+        </div>
+        <div class="col-lg-3 font-mono small text-secondary">
+          <p class="mb-1"><b>Sector:</b> IoT Monitoring</p>
+          <p class="mb-1"><b>Year:</b> 2023</p>
+          <p class="mb-2"><b>Tech:</b> IoT, C++, Firebase, Web</p>
+          <a class="btn-outline-custom w-100 justify-content-center" href="https://agridamiot-8059c.web.app/devices.html" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Visit App</a>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Clients & Works Section -->
-  <section id="clients" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="section-title text-center fade-stagger">Clients & Works</h2>
-      <h3 class="fade-stagger mb-4 text-center text-lg-start">GRAPHIC DESIGN</h3>
+      <div class="row g-4 align-items-center mb-4 industrial-card fade-stagger mx-0">
+        <div class="col-lg-4">
+          <div class="web-proj-img-wrap">
+            <img src="sublaten.png" alt="Sublaten Screenshot">
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3 class="h4">Sublaten Hardware Store System</h3>
+          <p class="text-info font-mono small">Inventory monitoring tool for a hardware retailer in Galimuyod.</p>
+          <p class="text-secondary small mb-0">Created a web-based portal allowing staff to organize, update, and manage hardware inventory efficiently.</p>
+        </div>
+        <div class="col-lg-3 font-mono small text-secondary">
+          <p class="mb-1"><b>Sector:</b> Retail / Hardware</p>
+          <p class="mb-1"><b>Year:</b> 2022</p>
+          <p class="mb-2"><b>Tech:</b> SQL, PHP, CSS</p>
+          <a class="btn-outline-custom w-100 justify-content-center" href="https://sublatenhardware.ml" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Visit Website</a>
+        </div>
+      </div>
 
-      <div class="row g-4 align-items-center mb-5 fade-stagger">
+      <div class="row g-4 align-items-center mb-5 industrial-card fade-stagger mx-0">
+        <div class="col-lg-4">
+          <div class="web-proj-img-wrap">
+            <img src="alon.png" alt="Alon Kiai Screenshot">
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3 class="h4">Alon Kia'i Landing Page</h3>
+          <p class="text-info font-mono small">Advocacy platform focused on marine life conservation.</p>
+          <p class="text-secondary small mb-0">Designed a responsive web page built to explain environmental objectives and grow awareness for ocean initiatives.</p>
+        </div>
+        <div class="col-lg-3 font-mono small text-secondary">
+          <p class="mb-1"><b>Sector:</b> NGO / Conservation</p>
+          <p class="mb-1"><b>Year:</b> 2020</p>
+          <p class="mb-2"><b>Tech:</b> UI/UX, Web Design</p>
+          <a class="btn-outline-custom w-100 justify-content-center" href="https://alonkiai.ml" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Visit Website</a>
+        </div>
+      </div>
+
+      <!-- Graphic Design Subsection follows after Web Development -->
+      <div class="section-title fade-stagger mt-5">Visual Media & Branding</div>
+      <h3 class="h3 mb-5 fade-stagger">GRAPHIC DESIGN PORTFOLIO</h3>
+
+      <div class="row g-4 align-items-center mb-5 industrial-card fade-stagger mx-0">
         <div class="col-lg-2 col-md-3 text-center">
-          <img class="img-fluid rounded mb-3 mb-md-0" style="max-height: 120px;" src="JCI.png" alt="JCI Logo">
+          <img class="img-fluid rounded mb-3 mb-md-0 border border-secondary p-2 bg-secondary bg-opacity-10" style="max-height: 100px;" src="JCI.png" alt="JCI Logo">
         </div>
         <div class="col-lg-7 col-md-9">
-          <h3>JCI Candon Gold Leaf</h3>
-          <h5>JCI Candon Gold Leaf is a Local Organization of Junior Chamber International focused on community outreach and youth leadership.</h5>
-          <p>I handled their social media visuals across Facebook and Instagram, crafting promotional graphics, event announcements, posters, and campaign templates.</p>
+          <h3 class="h4">JCI Candon Gold Leaf</h3>
+          <p class="text-info font-mono small mb-2">Local Organization of Junior Chamber International focused on community outreach and youth leadership.</p>
+          <p class="text-secondary small mb-0">I handled their social media visuals across Facebook and Instagram, crafting promotional graphics, event announcements, posters, and campaign templates.</p>
         </div>
-        <div class="col-lg-3 col-md-12">
+        <div class="col-lg-3 col-md-12 font-mono small text-secondary">
           <p class="mb-1"><b>Sector:</b> NGO</p>
           <p class="mb-1"><b>Company:</b> JCI Candon Gold Leaf</p>
           <p class="mb-1"><b>Year:</b> 2025</p>
-          <p class="mb-1"><b>Work Type:</b> Graphic Design</p>
+          <p class="mb-0"><b>Work Type:</b> Graphic Design</p>
         </div>
 
-        <div class="col-12 mt-3">
-          <h5 class="mb-1">Instagram & Facebook Visuals</h5>
-          <p class="text-muted">Static Posts (1080x1080)</p>
+        <div class="col-12 mt-4 pt-4 border-top border-secondary border-opacity-25">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="font-mono small text-uppercase mb-0">Instagram & Facebook Visuals</h5>
+            <span class="font-mono text-muted small">Static Posts (1080x1080)</span>
+          </div>
 
-          <div id="jciCarousel" class="carousel slide shadow rounded bg-white p-3 p-md-4" data-bs-ride="carousel">
+          <div id="jciCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators mb-0">
               <button type="button" data-bs-target="#jciCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Work 1"></button>
               <button type="button" data-bs-target="#jciCarousel" data-bs-slide-to="1" aria-label="Work 2"></button>
@@ -634,27 +647,29 @@
         </div>
       </div>
 
-      <div class="row g-4 align-items-center mt-5 fade-stagger">
+      <div class="row g-4 align-items-center industrial-card fade-stagger mx-0">
         <div class="col-lg-2 col-md-3 text-center">
-          <img class="img-fluid rounded mb-3 mb-md-0" style="max-height: 120px;" src="CRC-Logo.png" alt="CRC Logo">
+          <img class="img-fluid rounded mb-3 mb-md-0 border border-secondary p-2 bg-secondary bg-opacity-10" style="max-height: 100px;" src="CRC-Logo.png" alt="CRC Logo">
         </div>
         <div class="col-lg-7 col-md-9">
-          <h3>Candon Running Community</h3>
-          <h5>A running organization for competitive podium runners and fitness enthusiasts.</h5>
-          <p>I managed visual content for Facebook and Instagram, designing event assets, registration flyers, and social updates.</p>
+          <h3 class="h4">Candon Running Community</h3>
+          <p class="text-info font-mono small mb-2">A running organization for competitive podium runners and fitness enthusiasts.</p>
+          <p class="text-secondary small mb-0">I managed visual content for Facebook and Instagram, designing event assets, registration flyers, and social updates.</p>
         </div>
-        <div class="col-lg-3 col-md-12">
-          <p class="mb-1"><b>Sector:</b> Sports Club/Community</p>
-          <p class="mb-1"><b>Company:</b> Candon Running Community</p>
+        <div class="col-lg-3 col-md-12 font-mono small text-secondary">
+          <p class="mb-1"><b>Sector:</b> Sports Club</p>
+          <p class="mb-1"><b>Company:</b> Candon Running</p>
           <p class="mb-1"><b>Year:</b> 2025</p>
-          <p class="mb-1"><b>Work Type:</b> Graphic Design</p>
+          <p class="mb-0"><b>Work Type:</b> Graphic Design</p>
         </div>
 
-        <div class="col-12 mt-3">
-          <h5 class="mb-1">Instagram & Facebook Visuals</h5>
-          <p class="text-muted">Static Posts (1080x1350)</p>
+        <div class="col-12 mt-4 pt-4 border-top border-secondary border-opacity-25">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="font-mono small text-uppercase mb-0">Instagram & Facebook Visuals</h5>
+            <span class="font-mono text-muted small">Static Posts (1080x1350)</span>
+          </div>
 
-          <div id="crcCarousel" class="carousel slide shadow rounded bg-white p-3 p-md-4" data-bs-ride="carousel">
+          <div id="crcCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators mb-0">
               <button type="button" data-bs-target="#crcCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="CRC 1"></button>
               <button type="button" data-bs-target="#crcCarousel" data-bs-slide-to="1" aria-label="CRC 2"></button>
@@ -683,149 +698,330 @@
     </div>
   </section>
 
-  <!-- Web Design Section -->
-  <section class="py-5">
+  <!-- Certifications Carousel Section -->
+  <section id="certifications">
     <div class="container">
-      <h3 class="section-title fade-stagger text-center text-lg-start mb-4">Web Design & Development</h3>
+      <div class="section-title fade-stagger">Verification // Credentials</div>
+      <h2 class="h3 mb-5 fade-stagger">PROFESSIONAL CERTIFICATIONS</h2>
       
-      <div class="row g-4 align-items-center mb-5">
-        <div class="col-lg-5 fade-stagger order-1 order-lg-1">
-          <img class="img-fluid rounded shadow-sm" src="Agridam.png" alt="Agridam Screenshot">
+      <div id="certificationsCarousel" class="carousel slide shadow fade-stagger" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <div class="carousel-indicators mb-2">
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+          <button type="button" data-bs-target="#certificationsCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
         </div>
-        <div class="col-lg-4 fade-stagger order-2 order-lg-2">
-          <h3>Agridam: Early Flood Risk Monitoring System</h3>
-          <h5>An IoT system alerting communities about real-time water levels.</h5>
-          <p>Engineered an IoT device integrated with a live administrative tracking dashboard to log incoming sensor metrics accurately.</p>
-        </div>
-        <div class="col-lg-3 fade-stagger order-3 order-lg-3">
-          <p class="mb-1"><b>Sector:</b> Flood Prediction / Monitoring</p>
-          <p class="mb-1"><b>Company:</b> Personal Project</p>
-          <p class="mb-1"><b>Year:</b> 2023</p>
-          <p class="mb-1"><b>Tech:</b> IoT, C++, Firebase, Web</p>
-          <p class="mb-0"><b>Link:</b> <a class="link-info" href="https://agridamiot-8059c.web.app/devices.html" target="_blank">Visit Web App</a></p>
-        </div>
-      </div>
 
-      <div class="row g-4 align-items-center mb-5">
-        <div class="col-lg-5 fade-stagger order-1 order-lg-2">
-          <img class="img-fluid rounded shadow-sm" src="sublaten.png" alt="Sublaten Screenshot">
-        </div>
-        <div class="col-lg-4 fade-stagger order-2 order-lg-1">
-          <h3>Sublaten Hardware Store System</h3>
-          <h5>Inventory monitoring tool for a hardware retailer in Galimuyod.</h5>
-          <p>Created a web-based portal allowing staff to organize, update, and manage hardware inventory efficiently.</p>
-        </div>
-        <div class="col-lg-3 fade-stagger order-3 order-lg-3">
-          <p class="mb-1"><b>Sector:</b> Retail / Hardware</p>
-          <p class="mb-1"><b>Company:</b> Sublaten</p>
-          <p class="mb-1"><b>Year:</b> 2022</p>
-          <p class="mb-1"><b>Tech:</b> SQL, PHP, CSS, Web Design</p>
-          <p class="mb-0"><b>Link:</b> <a class="link-info" href="https://sublatenhardware.ml" target="_blank">Visit Website</a></p>
-        </div>
-      </div>
+        <!-- Carousel Slides -->
+        <div class="carousel-inner rounded">
+          <div class="carousel-item active">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-6 cert-img-container">
+                <img src="certDigital.png" class="img-fluid rounded" alt="Digital Marketing Certified">
+              </div>
+              <div class="col-md-6 p-3">
+                <h5 class="h4">Digital Marketing Certified</h5>
+                <p class="text-info font-mono small">HubSpot Academy // Valid: Aug 31, 2026 – Sep 29, 2028</p>
+                <p class="font-mono small text-secondary">Code: <code>2c675177929441f5b27f70edef29c67b</code></p>
+                <p class="text-secondary small">Demonstrates proficiency in applying inbound digital marketing strategies, SEO-friendly content creation, web optimization, multi-channel advertising, video marketing, and performance analytics.</p>
+              </div>
+            </div>
+          </div>
 
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-5 fade-stagger order-1 order-lg-2">
-          <img class="img-fluid rounded shadow-sm" src="alon.png" alt="Alon Kiai Screenshot">
+          <div class="carousel-item">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-6 cert-img-container">
+                <img src="cert CTPM.png" class="img-fluid rounded" alt="Certified Technical Project Manager">
+              </div>
+              <div class="col-md-6 p-3">
+                <h5 class="h4">Certified Technical Project Manager</h5>
+                <p class="text-info font-mono small">Appkademiya // Issued: Aug 31, 2026</p>
+                <p class="font-mono small text-secondary">No: <code>CERT-TECHNICAL-PROJECT-MANAGER-20260830-2A2F9C7BE2E7</code></p>
+                <p class="text-secondary small">Validates core capabilities in technical project oversight, workflow structure, risk mitigation, resource coordination, and execution of complex tech initiatives.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-6 cert-img-container">
+                <img src="certNetOps.png" class="img-fluid rounded" alt="NetOps Certified Engineer">
+              </div>
+              <div class="col-md-6 p-3">
+                <h5 class="h4">NetOps Certified Engineer (NTO-101)</h5>
+                <p class="text-info font-mono small">Appkademiya // Issued: Aug 31, 2026</p>
+                <p class="font-mono small text-secondary">No: <code>CERT-NETOPS-CERTIFIED-ENGINEER-NTO101-20260830-6BF59A8E80DE</code></p>
+                <p class="text-secondary small">Certifies expertise in network operations, infrastructure configuration, system reliability maintenance, and operational network engineering standards.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-6 cert-img-container">
+                <img src="certCCP.png" class="img-fluid rounded" alt="Certified Cybersecurity Professional">
+              </div>
+              <div class="col-md-6 p-3">
+                <h5 class="h4">Certified Cybersecurity Professional (CCP)</h5>
+                <p class="text-info font-mono small">Appkademiya // Issued: Aug 30, 2026</p>
+                <p class="font-mono small text-secondary">No: <code>CERT-CCP-CYBERSECURITY-PROFESSIONAL-20260829-3500E357B4F8</code></p>
+                <p class="text-secondary small">Confirms practical knowledge of cybersecurity principles, system security controls, threat assessment, and protective digital asset management.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-6 cert-img-container">
+                <img src="certSocialmedia.png" class="img-fluid rounded" alt="Social Media Certified">
+              </div>
+              <div class="col-md-6 p-3">
+                <h5 class="h4">Social Media Certified</h5>
+                <p class="text-info font-mono small">HubSpot Academy // Valid: Oct 13, 2025 – Nov 12, 2027</p>
+                <p class="font-mono small text-secondary">Code: <code>4605d4c05a424fbba166d8380b04b7ca</code></p>
+                <p class="text-secondary small">Validates capability in building inbound social media strategies, social monitoring, content creation, community engagement, policy creation, and demonstrating social ROI.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-6 cert-img-container">
+                <img src="SEO.jpeg" class="img-fluid rounded" alt="SEO with Squarespace Certificate">
+              </div>
+              <div class="col-md-6 p-3">
+                <h5 class="h4">Search Engine Optimization (SEO) with Squarespace</h5>
+                <p class="text-info font-mono small">Coursera // Issued: Sep 28, 2025</p>
+                <p class="font-mono small text-secondary">Credential ID: <code>7W95O2Y88PPU</code></p>
+                <p class="text-secondary small">Demonstrates practical capability in planning, configuring, and optimizing search engine optimization (SEO) settings, keyword placement, and metadata within Squarespace websites to drive organic traffic.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-lg-4 fade-stagger order-2 order-lg-1">
-          <h3>Alon Kia'i Landing Page</h3>
-          <h5>Advocacy platform focused on marine life conservation.</h5>
-          <p>Designed a responsive web page built to explain environmental objectives and grow awareness for ocean initiatives.</p>
-        </div>
-        <div class="col-lg-3 fade-stagger order-3 order-lg-3">
-          <p class="mb-1"><b>Sector:</b> NGO / Conservation</p>
-          <p class="mb-1"><b>Company:</b> Alon Kia'i</p>
-          <p class="mb-1"><b>Year:</b> 2020</p>
-          <p class="mb-1"><b>Tech:</b> Web Design, UI/UX</p>
-          <p class="mb-0"><b>Link:</b> <a class="link-info" href="https://alonkiai.ml" target="_blank">Visit Website</a></p>
-        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#certificationsCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#certificationsCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
   </section>
 
   <!-- Latest Ventures Section -->
-  <section id="ventures" class="py-5 bg-light">
+  <section id="ventures">
     <div class="container">
-      <h2 class="section-title text-center fade-stagger">My Latest Ventures</h2>
-      <div class="row g-4 text-center">
+      <div class="section-title fade-stagger">Business Architecture // Ventures</div>
+      <h2 class="h3 mb-5 fade-stagger">ACTIVE VENTURES</h2>
+      
+      <div class="row g-4">
         <div class="col-md-4 fade-stagger">
-          <a href="https://www.facebook.com/SoleGrip" target="_blank">
-            <img src="Solegrip.jpg" alt="SoleGrip" class="venture-img shadow-sm">
-          </a>
-          <h5 class="mt-3">SoleGrip – Shoe Grip Enhancer</h5>
-          <p>Performance product designed to improve shoe traction and control for athletes.</p>
+          <div class="industrial-card text-center">
+            <a href="https://www.facebook.com/SoleGrip" target="_blank">
+              <img src="Solegrip.jpg" alt="SoleGrip" class="venture-img mb-3">
+            </a>
+            <h5 class="h5">SoleGrip</h5>
+            <p class="text-info font-mono small">Shoe Grip Enhancer</p>
+            <p class="text-secondary small mb-0">Performance product designed to improve shoe traction and control for athletes.</p>
+          </div>
         </div>
         <div class="col-md-4 fade-stagger">
-          <a href="https://www.facebook.com/BaonemServices" target="_blank">
-            <img src="Baonem.jpg" alt="Baonem" class="venture-img shadow-sm">
-          </a>
-          <h5 class="mt-3">Baonem – Errand Services</h5>
-          <p>Reliable local logistics and errand execution for quick document and parcel movement.</p>
+          <div class="industrial-card text-center">
+            <a href="https://www.facebook.com/BaonemServices" target="_blank">
+              <img src="Baonem.jpg" alt="Baonem" class="venture-img mb-3">
+            </a>
+            <h5 class="h5">Baonem</h5>
+            <p class="text-info font-mono small">Errand Services</p>
+            <p class="text-secondary small mb-0">Reliable local logistics and errand execution for quick document and parcel movement.</p>
+          </div>
         </div>
         <div class="col-md-4 fade-stagger">
-          <a href="https://www.facebook.com/WTGWHERESTHEGOLD" target="_blank">
-            <img src="WTG.jpg" alt="WTG" class="venture-img shadow-sm">
-          </a>
-          <h5 class="mt-3">WTG? - Where's The Gold</h5>
-          <p>A streetwear label designed to inspire drive and personal success.</p>
+          <div class="industrial-card text-center">
+            <a href="https://www.facebook.com/WTGWHERESTHEGOLD" target="_blank">
+              <img src="WTG.jpg" alt="WTG" class="venture-img mb-3">
+            </a>
+            <h5 class="h5">WTG?</h5>
+            <p class="text-info font-mono small">Where's The Gold</p>
+            <p class="text-secondary small mb-0">A streetwear label designed to inspire drive and personal success.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience Section -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-title fade-stagger">Career Timeline // Track Record</div>
+      <h2 class="h3 mb-5 fade-stagger">WORK EXPERIENCE</h2>
+      
+      <div class="row g-4">
+        <div class="col-md-6 fade-stagger">
+          <div class="industrial-card">
+            <h5>Secretary General</h5>
+            <p class="text-info font-mono small">JCI Candon City Chapter (NGO) ● 2026 ● Newest</p>
+            <p class="text-secondary small mb-0">Serves as the primary administrative and coordination officer of JCI Candon Gold Leaf, working closely with the Local Organization President and Board of Directors to ensure effective communication, documentation, and implementation of chapter activities and organizational policies.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <div class="industrial-card">
+            <h5>Project Chairman, Manager & Director</h5>
+            <p class="text-info font-mono small">Various Sporting Events ● 20/10/2025 - Present ● Contractual</p>
+            <p class="text-secondary small mb-0">Directs overall operations, event logistics, and visual branding for major regional sports events including Sitio Korea - Calongbuyan Sportfest, IBP Run For Justice 2026, Run to End VAWC Fun Run, The Battle of Tirad Pass 100 miles Ultramarathon, Empow-Her Run Candon, Mind in Motion, and Runod Ayat Charity Race 2025.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <div class="industrial-card">
+            <h5>Founder / Co-Founder</h5>
+            <p class="text-info font-mono small">Candon Running Community ● 25/04/2025 - Present</p>
+            <p class="text-secondary small mb-0">Co-established and leads a vibrant community of podium runners and hobbyists in Candon, overseeing organizational strategy, promotional branding, community outreach, and regular running events.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <div class="industrial-card">
+            <h5>Event Floor Director / Creative Designer</h5>
+            <p class="text-info font-mono small">Public Attorney's Office (PAO) Region 1 ● 03/12/2025 - 13/12/2025</p>
+            <p class="text-secondary small mb-0">Managed live event floor execution, creative layout, and visual marketing assets under an agency contract to support official agency functions and regional gatherings.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <div class="industrial-card">
+            <h5>Board of Director for Business Opportunity</h5>
+            <p class="text-info font-mono small">JCI Candon City Chapter (NGO) ● 2025</p>
+            <p class="text-secondary small mb-0">Leads initiatives to connect entrepreneurs with business opportunities and promote community impact projects through JCI Programs.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <div class="industrial-card">
+            <h5>Website Developer</h5>
+            <p class="text-info font-mono small">Freelance ● 2022 - Present</p>
+            <p class="text-secondary small mb-0">Designs and deploys custom responsive web apps, landing pages, and administrative management platforms tailored to individual client goals.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <div class="industrial-card">
+            <h5>Founder / Owner</h5>
+            <p class="text-info font-mono small">Baonem Private Errand Services ● 2025 - Present</p>
+            <p class="text-secondary small mb-0">Founded and actively operates a localized delivery and errand service, organizing logistics workflows and launching targeted digital marketing campaigns.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <div class="industrial-card">
+            <h5>Video Editor</h5>
+            <p class="text-info font-mono small">Freelance ● 2022 - Present</p>
+            <p class="text-secondary small mb-0">Edited short-form highlight videos from full-length footage like wedding same-day edits (SDE) to create engaging, shareable social content.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <div class="industrial-card">
+            <h5>Founder / Owner</h5>
+            <p class="text-info font-mono small">Solegrip ● 2023 - Present</p>
+            <p class="text-secondary small mb-0">Established and manages an athletic sports performance product brand designed to improve court traction and shoe safety for athletes.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <div class="industrial-card">
+            <h5>Marketing Assistant</h5>
+            <p class="text-info font-mono small">Unirises ● 2021 - 2022</p>
+            <p class="text-secondary small mb-0">Helped launch and scale a tech startup software company by building its core digital marketing foundation from the ground up.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-stagger">
+          <div class="industrial-card">
+            <h5>Freelance Social Media Recovery Specialist</h5>
+            <p class="text-info font-mono small">Independent ● 2019 - 2021 ● Oldest</p>
+            <p class="text-secondary small mb-0">Provided account recovery assistance and consultation by helping clients regain access to compromised or lost social media handles.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- NGO & Voluntary Work Section -->
-  <section id="ngo" class="py-5">
+  <section id="ngo">
     <div class="container">
-      <h2 class="section-title text-center fade-stagger">NGO & Voluntary Work</h2>
+      <div class="section-title fade-stagger">Community Impact // Civic Work</div>
+      <h2 class="h3 mb-5 fade-stagger">NGO & VOLUNTARY WORK</h2>
+      
       <div class="row g-4">
         <div class="col-md-6 fade-stagger">
-          <h5>Project Head / Project Implementor – Candon Running Community Runs</h5>
-          <p><em>Present</em></p>
-          <p>Oversees the planning, implementation, and overall execution of community running initiatives and athletic programs organized under Candon Running Community.</p>
+          <div class="industrial-card">
+            <h5>Project Head / Project Implementor</h5>
+            <p class="text-info font-mono small">Candon Running Community Runs ● Present</p>
+            <p class="text-secondary small mb-0">Oversees the planning, implementation, and overall execution of community running initiatives and athletic programs organized under Candon Running Community.</p>
+          </div>
         </div>
 
         <div class="col-md-6 fade-stagger">
-          <h5>Volunteer / Technical Committee – Project Silaw</h5>
-          <p><em>07/02/2026 ● JCI Candon Gold Leaf / Brgy. Caterman, Candon City</em></p>
-          <p>Collaborated with JCI Ilocandia Region and JCI Imus Wagayway to conduct community assessments and deliver essential assistance to remote households in Caterman.</p>
+          <div class="industrial-card">
+            <h5>Volunteer / Technical Committee</h5>
+            <p class="text-info font-mono small">Project Silaw ● 07/02/2026</p>
+            <p class="text-secondary small mb-0">Collaborated with JCI Ilocandia Region and JCI Imus Wagayway to conduct community assessments and deliver essential assistance to remote households in Caterman.</p>
+          </div>
         </div>
 
         <div class="col-md-6 fade-stagger">
-          <h5>Volunteer – Hapagkamustahan Year 2: A Table of Hope</h5>
-          <p><em>25/04/2026 ● JCI Candon Gold Leaf / Province Government of Ilocos Sur / Provincial Jail of I.S. / IBP - Ilocos Sur</em></p>
-          <p>Engaged in inmate welfare visits at BJMP, hosting meaningful dialogues and providing social support specifically tailored for Persons Deprived of Liberty without regular visitors.</p>
+          <div class="industrial-card">
+            <h5>Volunteer</h5>
+            <p class="text-info font-mono small">Hapagkamustahan Year 2: A Table of Hope ● 25/04/2026</p>
+            <p class="text-secondary small mb-0">Engaged in inmate welfare visits at BJMP, hosting meaningful dialogues and providing social support specifically tailored for Persons Deprived of Liberty without regular visitors.</p>
+          </div>
         </div>
 
         <div class="col-md-6 fade-stagger">
-          <h5>Volunteer / Technical Committee – Happy Grannies</h5>
-          <p><em>10/25/2025 ● JCI Candon Gold Leaf / Balay Taripato Home for Care, Sta. Lucia</em></p>
-          <p>Visited senior residents at Balay Taripato Home for Care, facilitating entertainment, interactive engagement, and essential supply distributions.</p>
+          <div class="industrial-card">
+            <h5>Volunteer / Technical Committee</h5>
+            <p class="text-info font-mono small">Happy Grannies ● 25/10/2025</p>
+            <p class="text-secondary small mb-0">Visited senior residents at Balay Taripato Home for Care, facilitating entertainment, interactive engagement, and essential supply distributions.</p>
+          </div>
         </div>
 
         <div class="col-md-6 fade-stagger">
-          <h5>Volunteer / Technical Committee – YOUthCANDOnIT: Take Lead Leadership</h5>
-          <p><em>07/10/2025 ● JCI Candon Gold Leaf</em></p>
-          <p>Organized student leadership seminars to foster effective governance skills and facilitated the Youth Leadership Excellence Award (YLEA) presentation.</p>
+          <div class="industrial-card">
+            <h5>Volunteer / Technical Committee</h5>
+            <p class="text-info font-mono small">YOUthCANDOnIT: Take Lead Leadership ● 07/10/2025</p>
+            <p class="text-secondary small mb-0">Organized student leadership seminars to foster effective governance skills and facilitated the Youth Leadership Excellence Award (YLEA) presentation.</p>
+          </div>
         </div>
 
         <div class="col-md-6 fade-stagger">
-          <h5>Volunteer / Technical Committee – Project Bright Start: Bag to School Program</h5>
-          <p><em>06/16/2025 ● JCI Candon Gold Leaf / Brgy. Bay-asan, Banayoyo, Ilocos Sur</em></p>
-          <p>Facilitated Safe Spaces Act educational discussions for local children while distributing school supplies and personal hygiene kits to a remote community.</p>
+          <div class="industrial-card">
+            <h5>Volunteer / Technical Committee</h5>
+            <p class="text-info font-mono small">Project Bright Start: Bag to School Program ● 16/06/2025</p>
+            <p class="text-secondary small mb-0">Facilitated Safe Spaces Act educational discussions for local children while distributing school supplies and personal hygiene kits to a remote community.</p>
+          </div>
         </div>
 
         <div class="col-md-6 fade-stagger">
-          <h5>Volunteer – PaWeCan!: Shell-Ebrate Life, Save Our Turtles</h5>
-          <p><em>20/05/2025 ● JCI Candon Gold Leaf / Curma La Union</em></p>
-          <p>Engaged in coastal environmental preservation activities and sea turtle habitat awareness initiatives.</p>
+          <div class="industrial-card">
+            <h5>Volunteer</h5>
+            <p class="text-info font-mono small">PaWeCan!: Shell-Ebrate Life, Save Our Turtles ● 20/05/2025</p>
+            <p class="text-secondary small mb-0">Engaged in coastal environmental preservation activities and sea turtle habitat awareness initiatives.</p>
+          </div>
         </div>
       </div>
 
-      <div class="row mt-5">
+      <div class="row mt-4">
         <div class="col-12 text-center fade-stagger">
-          <p class="text-muted fst-italic">
-            In addition to these highlighted projects, I regularly participate in various other community development and civic actions. To learn more or explore my ongoing involvement, please visit the official <a href="https://www.facebook.com/JCICandon" target="_blank" class="text-decoration-none fw-bold" style="color: #34656D;">JCI Candon Gold Leaf</a> page.
+          <p class="text-secondary font-mono small">
+            To learn more or explore ongoing involvement, please visit the official <a href="https://www.facebook.com/JCICandon" target="_blank" class="text-info text-decoration-none fw-bold">JCI Candon Gold Leaf</a> page.
           </p>
         </div>
       </div>
@@ -833,68 +1029,62 @@
   </section>
 
   <!-- Testimonials Section -->
-  <section id="testimonials" class="py-5 bg-light">
+  <section id="testimonials">
     <div class="container">
-      <h2 class="section-title text-center fade-stagger">Reviews & Testimonials</h2>
+      <div class="section-title fade-stagger">Feedback // Reviews</div>
+      <h2 class="h3 mb-5 fade-stagger">CLIENT TESTIMONIALS</h2>
+      
       <div class="row g-4">
         <div class="col-lg-3 col-md-6 fade-stagger">
-          <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
-            <blockquote class="blockquote">
-              <i class="bi bi-chat-quote-fill text-primary fs-3"></i>
-              <p class="fs-6 mt-2">"Solid talaga, madulas at dusty yung court namin, pero nung ina-apply ko SoleGrip, Grabe sulit talaga!"</p>
-            </blockquote>
+          <div class="industrial-card d-flex flex-column justify-content-between">
             <div>
-              <div class="text-warning mb-1">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
+              <div class="text-info mb-2"><i class="bi bi-chat-quote-fill fs-4"></i></div>
+              <p class="small text-secondary mb-3">"Solid talaga, madulas at dusty yung court namin, pero nung ina-apply ko SoleGrip, Grabe sulit talaga!"</p>
+            </div>
+            <div>
+              <div class="text-warning small mb-1">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
               </div>
-              <footer class="blockquote-footer mb-0">D***F • <em>SoleGrip TikTok Shop</em></footer>
+              <p class="font-mono small text-slate-100 mb-0">D***F // <em>SoleGrip TikTok Shop</em></p>
             </div>
           </div>
         </div>
 
         <div class="col-lg-3 col-md-6 fade-stagger">
-          <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
-            <blockquote class="blockquote">
-              <i class="bi bi-chat-quote-fill text-primary fs-3"></i>
-              <p class="fs-6 mt-2">"This is lit, effective yung product, kudos👌"</p>
-            </blockquote>
+          <div class="industrial-card d-flex flex-column justify-content-between">
             <div>
-              <div class="text-warning mb-1">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
+              <div class="text-info mb-2"><i class="bi bi-chat-quote-fill fs-4"></i></div>
+              <p class="small text-secondary mb-3">"This is lit, effective yung product, kudos👌"</p>
+            </div>
+            <div>
+              <div class="text-warning small mb-1">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
               </div>
-              <footer class="blockquote-footer mb-0">thearah • <em>SoleGrip Shopee Shop</em></footer>
+              <p class="font-mono small text-slate-100 mb-0">thearah // <em>SoleGrip Shopee</em></p>
             </div>
           </div>
         </div>
 
         <div class="col-lg-3 col-md-6 fade-stagger">
-          <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
-            <blockquote class="blockquote">
-              <i class="bi bi-chat-quote-fill text-primary fs-3"></i>
-              <p class="fs-6 mt-2">"Super maaasahan talaga and hindi ka magdadalawang isip kasi mahaba patience. Di ka mahihiya kasi madali lang sila kausap"</p>
-            </blockquote>
+          <div class="industrial-card d-flex flex-column justify-content-between">
             <div>
-              <footer class="blockquote-footer mb-0">Ynna Inigo • <em>Baonem Facebook Page</em></footer>
+              <div class="text-info mb-2"><i class="bi bi-chat-quote-fill fs-4"></i></div>
+              <p class="small text-secondary mb-3">"Super maaasahan talaga and hindi ka magdadalawang isip kasi mahaba patience. Di ka mahihiya kasi madali lang sila kausap"</p>
+            </div>
+            <div>
+              <p class="font-mono small text-slate-100 mb-0">Ynna Inigo // <em>Baonem FB Page</em></p>
             </div>
           </div>
         </div>
 
         <div class="col-lg-3 col-md-6 fade-stagger">
-          <div class="p-3 bg-white rounded shadow-sm h-100 d-flex flex-column justify-content-between">
-            <blockquote class="blockquote">
-              <i class="bi bi-chat-quote-fill text-primary fs-3"></i>
-              <p class="fs-6 mt-2">"Sobrang quality, from the first design consistent at nag-iimprove pa! #Gold"</p>
-            </blockquote>
+          <div class="industrial-card d-flex flex-column justify-content-between">
             <div>
-              <footer class="blockquote-footer mb-0">Lester Castro • <em>WTG? Facebook Page</em></footer>
+              <div class="text-info mb-2"><i class="bi bi-chat-quote-fill fs-4"></i></div>
+              <p class="small text-secondary mb-3">"Sobrang quality, from the first design consistent at nag-iimprove pa! #Gold"</p>
+            </div>
+            <div>
+              <p class="font-mono small text-slate-100 mb-0">Lester Castro // <em>WTG? FB Page</em></p>
             </div>
           </div>
         </div>
@@ -902,16 +1092,100 @@
     </div>
   </section>
 
+  <!-- Book Now / Contact Section -->
+  <section id="booking">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="industrial-card p-4 p-md-5 fade-stagger">
+            <div class="text-center mb-4">
+              <div class="section-title justify-content-center mb-2">Initiate Contact</div>
+              <h2 class="h3 fw-bold">Let's Work Together</h2>
+              <p class="text-secondary small">Fill out this quick form and I will get back to you shortly.</p>
+            </div>
+            
+            <form id="bookingFunnelForm" novalidate>
+              <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name *</label>
+                <input type="text" class="form-control" id="fullName" placeholder="e.g. John Doe" required>
+                <div class="invalid-feedback">Please enter your full name.</div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="emailAddress" class="form-label">Email Address *</label>
+                <input type="email" class="form-control" id="emailAddress" placeholder="e.g. john@example.com" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="contactNumber" class="form-label">Contact Number *</label>
+                <input type="tel" class="form-control" id="contactNumber" placeholder="e.g. 09171234567 or +639171234567" required>
+                <div class="invalid-feedback">Please enter a valid Philippine mobile number (e.g., 09171234567 or +639171234567).</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="serviceSelect" class="form-label">Service You Need *</label>
+                <select class="form-select" id="serviceSelect" required>
+                  <option value="" selected disabled>Select a service...</option>
+                  <option value="Graphic Design & SMM">Graphic Design & Social Media Management</option>
+                  <option value="Consultation & Strategy">AI Workflow Automation</option>
+                  <option value="Web Design & Development">Web Design & Development</option>
+                  <option value="Video Editing">Video Editing</option>
+                  <option value="Event Planning & Management">Event Planning / Management</option>
+                  <option value="Consultation & Strategy">Consultation & Strategy</option>
+                  <option value="Other">Other Custom Service</option>
+                </select>
+                <div class="invalid-feedback">Please select a service option.</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="projectDetails" class="form-label">Project Details / Message</label>
+                <textarea class="form-control" id="projectDetails" rows="4" placeholder="Tell me a bit about your project, timeline, or requirements..."></textarea>
+              </div>
+
+              <div id="formErrorMessage" class="text-danger font-mono small mb-3 d-none">
+                <i class="bi bi-exclamation-triangle-fill me-1"></i> There was an error submitting your request. Please check all fields and try again.
+              </div>
+
+              <button type="submit" class="btn btn-book-now w-100 justify-content-center mt-2">
+                Submit Request <i class="bi bi-send-fill ms-1"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content industrial-card text-center p-4">
+        <div class="modal-body p-3">
+          <div class="text-info mb-3">
+            <i class="bi bi-check-circle-fill display-4"></i>
+          </div>
+          <h3 class="h4 fw-bold mb-2">Request Received!</h3>
+          <p class="text-secondary small mb-4">Thank you for reaching out. Your booking request has been successfully transmitted and I'll get back to you soon.</p>
+          <button type="button" class="btn btn-book-now px-4" data-bs-dismiss="modal">Great, thanks!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p class="mb-0">&copy; 2026 Metmet. All rights reserved.</p>
+      <p class="mb-0 font-mono">&copy; 2026 Meteor Ordona. All systems operational.</p>
     </div>
   </footer>
 
   <!-- Bootstrap JS from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Replace with your actual Google Apps Script Web App URL after deployment
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxn7pAxDIWAPoEZVQsJZqKMuXFyV7WFDEa-E5LH6KKMDvm9gUo0H3uyClCSxigVH5h9/exec";
+
     // Fade-in animation with stagger effect
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver((entries) => {
@@ -920,11 +1194,11 @@
           entry.target.classList.add('visible');
           const children = entry.target.querySelectorAll('.fade-stagger');
           children.forEach((child, index) => {
-            child.style.transitionDelay = `${index * 0.15}s`;
+            child.style.transitionDelay = `${index * 0.12}s`;
           });
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
 
     sections.forEach(section => {
       observer.observe(section);
@@ -1006,46 +1280,36 @@
         contactNumber: contactInput.value.trim(),
         serviceNeeded: serviceInput.value,
         projectDetails: document.getElementById('projectDetails').value.trim(),
-        submittedAt: new Date().toISOString()
+        submittedAt: new Date().toLocaleString()
       };
-
-      const WEBHOOK_URL = 'https://hook.us2.make.com/uc1o76ga6ef7aple6r5ep3h27d8omil7';
 
       try {
         submitBtn.disabled = true;
         submitBtn.innerHTML = 'Sending... <span class="spinner-border spinner-border-sm ms-1" role="status"></span>';
 
-        const response = await fetch(WEBHOOK_URL, {
+        // POST request to Google Apps Script Web App URL with no-cors handling for cross-origin forms
+        await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
+          mode: 'no-cors',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain;charset=utf-8'
           },
           body: JSON.stringify(payload)
         });
 
-        if (response.ok) {
-          // Reset Form and remove field styles
-          this.reset();
-          [fullNameInput, emailInput, contactInput, serviceInput].forEach(field => {
-            field.classList.remove('is-valid', 'is-invalid');
-          });
+        // Reset Form and remove field styles
+        this.reset();
+        [fullNameInput, emailInput, contactInput, serviceInput].forEach(field => {
+          field.classList.remove('is-valid', 'is-invalid');
+        });
 
-          // Hide Booking Modal
-          const bookingModalEl = document.getElementById('bookingModal');
-          const bookingModalInstance = bootstrap.Modal.getInstance(bookingModalEl);
-          if (bookingModalInstance) {
-            bookingModalInstance.hide();
-          }
+        // Show Success Modal
+        const successModalEl = document.getElementById('successModal');
+        const successModalInstance = new bootstrap.Modal(successModalEl);
+        successModalInstance.show();
 
-          // Show Success Modal
-          const successModalEl = document.getElementById('successModal');
-          const successModalInstance = new bootstrap.Modal(successModalEl);
-          successModalInstance.show();
-        } else {
-          formErrorMsg.classList.remove('d-none');
-        }
       } catch (error) {
-        console.error('Webhook Error:', error);
+        console.error('Submission Error:', error);
         formErrorMsg.classList.remove('d-none');
       } finally {
         submitBtn.disabled = false;
